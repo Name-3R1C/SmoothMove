@@ -19,12 +19,11 @@ app.post("/users", async(req, res) => {
       [name, email, password]
     );
 
-    res.json(newUser);
+    res.json(newUser.rows);
   } catch (error) {
     console.error(error.message);
   }
 });
-
 
 app.listen(9000, () => {
   console.log("server has started on port 9000");
