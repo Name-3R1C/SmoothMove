@@ -1,45 +1,56 @@
-## User Story: Property Owner
+# User Stories for Smooth Move Web Application
 
-"As a property owner, I want to list my property for sale on the platform so that I can reach potential buyers and facilitate the selling process efficiently."
+## User Registration and Profiles
 
-### Acceptance Criteria for Listing a Property:
+- As a prospective tenant or landlord, I want to create a secure account with my personal information and preferences, so that I can start using the Smooth Move platform to search for or list rental properties.
 
-1. **Easy Access:** Users can easily find the "List Property" feature either on their dashboard or on the main page.
+## Property Listings
 
-2. **Detailed Property Information:** When listing a property, users are asked to provide detailed information, including the price, location, square footage, and other important details.
+- As a property owner, I want to easily create detailed property listings, including descriptions, images, prices, and locations, so that I can attract potential tenants.
+- As a tenant, I want to search for rental properties with various filters like location, price range, and property type, so that I can find properties that match my criteria.
+- As a tenant, I want to be able to rate and review properties I have rented, so that I can provide feedback to help other users make informed decisions.
 
-3. **Showcasing with Media:** Users can showcase their property effectively by uploading high-quality images and videos.
+## Landlord Features
 
-4. **Input Validation:** The system checks the information provided by users to ensure it's accurate and complete, helping avoid errors or omissions.
+- As a landlord, I want access to a dashboard where I can manage my properties, so that I can easily track and update my listings.
+- As a landlord, I want a rent collection and tracking system, so that I can efficiently manage rent payments from my tenants.
+- As a landlord, I want a maintenance request management system, so that I can address tenant maintenance requests promptly.
 
-5. **Confirmation and Visibility:** Once a property is successfully listed, users receive a confirmation message. The listing becomes visible on the platform for potential buyers to see.
+## Property Search
 
-6. **Editing and Removal:** Users have the flexibility to edit or remove their property listing at any time, giving them control over their listings.
+- As a tenant, I want to use advanced search functionality to refine my property search based on criteria like location, price range, and property type, so that I can find the perfect rental property.
+- As a tenant, I want to explore properties in specific areas using a map-based search with geolocation, so that I can visually see the available options in a particular neighborhood.
+- As a tenant, I want to save my searches and set up property alerts, so that I can be notified when new listings that match my preferences become available.
 
-7. **Comprehensive Listings:** Property listings include all the information provided by users and can be easily found by potential buyers using search and filter options.
+## Booking and Reservations
 
-8. **Multiple Listings:** Users can manage multiple property listings if they have more than one property for sale.
+- As a tenant, I want to use the booking system to reserve rental properties and receive instant booking confirmations.
 
-## User Story: Homebuyer
+## Payment Processing
 
-"As a prospective homebuyer, I want to search for properties on the platform so that I can find a suitable home that meets my preferences and budget."
+- As a tenant, I want to make rent payments securely through the platform, receive automatic rent reminders, and access my transaction history and receipts.
 
-### Acceptance Criteria for Property Searching:
+## Communication and Notifications
 
-1. **Quick Access:** Users can easily find the "Property Search" feature on the home page or in the navigation menu.
+- As a user, I want to communicate with landlords, property managers, and other tenants through in-app messaging for inquiries and updates.
+- As a user, I want to receive email and push notifications for important updates and announcements related to my rental property.
 
-2. **Flexible Search Options:** The search function allows users to specify their preferences, including location, price range, property type, and any other relevant filters.
+## Document Storage and Management
 
-3. **Explore with Maps:** Users have the option to explore properties in specific areas using a map-based search feature that utilizes geolocation.
+- As a user, I want to securely store and easily access important documents such as lease agreements and identification within the app.
 
-4. **Effortless Search:** After entering their search criteria, users can start the search and view a list of properties that match their preferences.
+## User Ratings and Feedback
 
-5. **Detailed Property Listings:** Each property listing provides comprehensive details, including price, location, square footage, and high-quality images and videos.
+- As a user, I want to provide ratings and feedback on the properties and the overall renting experience to help improve the platform.
 
-6. **Easy Expression of Interest:** Users can click on a property listing to learn more and express their interest by using buttons like "Contact Seller" or "Schedule Viewing."
+## Integration with Local Services
 
-7. **Save and Stay Informed:** The system allows users to save their searches for future reference and set up property alerts to receive notifications about new listings that match their criteria.
+- As a user, I want to access recommendations and discounts for local services such as moving companies and utility setup through the platform.
 
-8. **User-Friendly Navigation:** Users can easily go back to the search results or refine their search criteria as needed, making the experience smooth and efficient.
+## Application (Optional)
 
-9. **Seamless Communication:** If users want to get in touch with a seller or real estate agent, they can use the messaging system to send inquiries or schedule property viewings.
+- As a tenant, I want to submit my rental application online through the app to streamline the application process.
+
+## Lease Management (Optional)
+
+- As a tenant, I want to digitally sign lease agreements and receive lease renewal reminders through the platform.
