@@ -1,10 +1,10 @@
-# Smooth Move - Simplifying Home Transactions
+# Smooth Move Web Application
 
 ## Project Description
 
 ### Overview
 
-Smooth Move is a user-friendly web application designed to streamline the process of buying and selling properties. It aims to provide a one-stop platform for users to manage their real estate transactions efficiently.
+Smooth Move is a user-friendly web application designed to streamline the process of renting properties. It aims to provide a one-stop platform for users to manage their renting experience efficiently.
 
 ### Key Features
 
@@ -16,36 +16,68 @@ Smooth Move is a user-friendly web application designed to streamline the proces
 
 #### 2. Property Listings
 
-- Users can easily list properties for sale.
-- Detailed property information such as price, location, square footage, and more is provided.
-- High-quality images and videos showcase the property.
-- Search and filter options help users find the right property.
+- Property listing creation with details (description, images, price, location).
+- Property search with filters (location, price range, property type, etc.).
+- Property rating and review system.
 
-#### 3. Property Search
+#### 3. Landlord Features:
+
+- Dashboard for landlords to manage their properties.
+- Rent collection and tracking.(Optional)
+- Maintenance request management.(Optional)
+
+#### 4. Property Search
 
 - Advanced search functionality allows users to refine their property search based on criteria like location, price range, property type, etc.
 - Optional map-based search with geolocation helps users explore properties in specific areas.
 - Saved searches and property alerts (optional) keep users informed about new listings matching their preferences.
 
-#### 4. Communication Tools (Optional)
+#### 5. Booking and Reservations:
 
-- A messaging system facilitates communication between buyers and sellers.
-- Real-time notifications notify users about new messages and property updates.
+- Booking system for users to reserve properties.
+- Availability calendar for each property.
+- Instant booking confirmation.
 
-#### 5. Agent Profiles (Optional)
+#### 6. Payment Processing:
 
-- Real estate agents can create profiles with their information and availability.
-- Users can leave reviews and ratings for agents.
-- Agent contact information is easily accessible.
+- Integration with a secure payment gateway.
+- Automatic rent reminders and scheduled payments.
+- Transaction history and receipts.
 
-#### 6. Admin Panel (Optional)
+#### 7. Communication and Notifications:
 
-- Administrators have access to a dashboard for managing users, listings, and content.
-- User and content moderation tools help maintain the quality and security of the platform.
+- In-app messaging between landlords and tenants.
+- Email and push notifications for important updates.
+- Announcements and alerts from property managers.
+
+#### 8. Document Storage and Management: (Optional)
+
+- Secure storage for important documents (leases, IDs, etc.).
+- Easy retrieval and sharing of documents.
+- Document expiration reminders.
+
+#### 9. User Ratings and Feedback: (Optional)
+
+- Rating and feedback system for both landlords and tenants.
+- Continuous improvement based on user input.
+
+#### 10. Integration with Local Services:(Optional)
+
+- Integration with local services (e.g., moving companies, utility setup).
+- Recommendations and discounts for users.
+
+#### 6. Application (Optional)
+
+- Online rental application submission.
+
+#### 7. Lease Management (Optional)
+
+- Digital lease agreement signing.
+- Lease renewal reminders.
 
 ## Target Audience
 
-Smooth Move caters to both property buyers and sellers, as well as real estate agents looking to connect with clients. Administrators manage the platform.
+Smooth Move caters to both property renters and landlords, as well as property managers looking to connect with tenants. Administrators oversee the platform.
 
 ## Technology Stack
 
