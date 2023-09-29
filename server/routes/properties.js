@@ -4,14 +4,23 @@ const db = require("../db")
 router.get('/properties', async (req, res) => {
   try {
     console.log("server - index - get - properties");
-    db.query(
-      `
-      SELECT * FROM properties
-      `
-    )
-    .then((properties) => {
-      res.send({properties})
-    })
+    const queryParams = [];
+    let queryString = `
+    SELECT * FROM properties
+    WHERE TRUE 
+    `;
+    
+    if (req.query) {
+      console.log(req.query.id);
+      queryParams.push(`${req.query.id}`);
+      queryString += `AND id = $${queryParams.length} `;
+    }
+
+    const result = await db.query(queryString, queryParams)
+      .then((properties) => {
+        console.log(properties);
+        res.send({properties})
+      })
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Server error' });

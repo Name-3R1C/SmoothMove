@@ -15,8 +15,8 @@ export default function PropertyList(prop) {
   }, []);
 
   return (
-    <div class="container">
-      <div class="row row-cols-1 row-cols-md-3">
+    <div className="container">
+      <div className="row row-cols-1 row-cols-md-3">
         {prop.properties.map((property) => (
           <div key={property.id}>
             <div className='card'>

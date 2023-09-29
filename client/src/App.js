@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import './App.css';
 import PropertyList from './components/PropertyList';
-import NewProperty from './components/NewProperty';
-
+import AddProperty from './components/AddProperty';
+import PropertyDetail from './components/PropertyDetail';
 
 function App() {
 
@@ -11,7 +11,8 @@ function App() {
       {/* <PropertyList 
         properties={properties}
       /> */}
-      <NewProperty />
+      {/* <AddProperty /> */}
+      <PropertyDetail />
     </Fragment>
   );
 }
