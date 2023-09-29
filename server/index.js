@@ -12,13 +12,13 @@ const express = require("express")
 const app = express();
 const bodyparser = require("body-parser");
 const cors = require("cors");
+app.use(cors());
+app.use(express.json());
+app.use(bodyparser.json());
 
 // ROUTES // 
 const properties = require("./routes/properties");
 
-app.use(cors());
-app.use(express.json());
-app.use(bodyparser.json());
 app.use("/api", properties);
 
 app.listen(PORT, () => {

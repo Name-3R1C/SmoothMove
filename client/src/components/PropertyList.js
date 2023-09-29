@@ -1,38 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import axios from "axios";
+import React from 'react';
 
-function PropertyList() {
-  const [properties, setProperties] = useState([]);
 
-  useEffect(() => {
-    axios.get('/api/properties')
-      .then((response) => {
-        console.log("client - src - properties", response.data.properties.rows);
-        setProperties(response.data.properties.rows);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
-
+function PropertyList(prop) {
   // Render your properties here
   return (
-    <div>
-      {properties.map((property) => (
-        <div key={property.id}>
-          <section>
-            <img src={property.thumbnail_photo_url} />
-          </section>
-          <ul>
-            <li>{property.title}</li>
-            <li>{property.description}</li>
-            <li>{property.cost_per_month}</li>
-            <li>{property.number_of_bedrooms}</li>
-            <li>{property.number_of_bathrooms}</li>
-            <li>{property.area}</li>
-          </ul>
-        </div>
-      ))}
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-3">
+        {prop.properties.map((property) => (
+          <div key={property.id}>
+            <div className='card'>
+              <img src={property.thumbnail_photo_url} />
+              <div className='card-body'>
+                <h5 className='card-title'>${property.cost_per_month}</h5>
+                <p className='card-text'>{property.number_of_bedrooms} bed {property.number_of_bathrooms} bath {property.area} sqrt</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

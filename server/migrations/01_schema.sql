@@ -27,7 +27,7 @@ CREATE TABLE properties (
   city VARCHAR(255) NOT NULL,
   province VARCHAR(255) NOT NULL,
   post_code VARCHAR(255) NOT NULL,
-  created_date DATE NOT NULL, 
+  listed_date DATE NOT NULL, 
   
   active BOOLEAN NOT NULL DEFAULT TRUE
 );

@@ -3,14 +3,13 @@ const db = require("../db")
 
 router.get('/properties', async (req, res) => {
   try {
-    console.log("server - index - properties");
+    console.log("server - index - getProperties");
     db.query(
       `
       SELECT * FROM properties
       `
     )
     .then((properties) => {
-      console.log(res.rows);
       res.send({properties})
     })
   } catch (error) {
