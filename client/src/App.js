@@ -1,11 +1,18 @@
 import React, { Fragment } from 'react';
 import './App.css';
-import InsertUser from './components/InsertUser';
+import PropertyList from './components/PropertyList';
+import AddProperty from './components/AddProperty';
+import PropertyDetail from './components/PropertyDetail';
 
 function App() {
+
   return (
     <Fragment>
-      <InsertUser />
+      {/* <PropertyList 
+        properties={properties}
+      /> */}
+      {/* <AddProperty /> */}
+      <PropertyDetail />
     </Fragment>
   );
 }

@@ -9,9 +9,9 @@ Smooth Move is a user-friendly web application designed to streamline the proces
 ```
 git clone https://github.com/shovon231/LHLFinal
 ```
-2. Install dependencies:
+2. Install dependencies in both Serve and Client directory
 ```
-bundle install
+npm install
 ```
 
 # Usage
@@ -42,6 +42,7 @@ CREATE DATABASE smoothmove;
 4. create the necessary tables and populate them with sample data:
 ```
 \i migrations/01_schema.sql
+\i seeds/01_users.sql
 ```
 
 # Dependencies

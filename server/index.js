@@ -1,30 +1,26 @@
+// evn setup
+const PORT = process.env.PORT || 8001;
+const path = require("path");
+const ENV = process.env.NODE_ENV || "development";
+const PATH = path.resolve(__dirname, "../.env." + ENV);
+
+require("dotenv").config({ path: PATH });
+
+module.exports = ENV; 
+
 const express = require("express")
 const app = express();
+const bodyparser = require("body-parser");
 const cors = require("cors");
-const pool = require("./db")
-
-
 app.use(cors());
 app.use(express.json());
+app.use(bodyparser.json());
 
 // ROUTES // 
-app.post("/users", async(req, res) => {
-  try {
-    const name = req.body.name;
-    const email  = req.body.email;
-    const password = req.body.password;
-    
-    const newUser = await pool.query(
-      "INSERT INTO users (name, email, password) VALUES($1, $2, $3) RETURNING *",
-      [name, email, password]
-    );
+const properties = require("./routes/properties");
 
-    res.json(newUser.rows);
-  } catch (error) {
-    console.error(error.message);
-  }
-});
+app.use("/api", properties);
 
-app.listen(9000, () => {
-  console.log("server has started on port 9000");
+app.listen(PORT, () => {
+  console.log(`server has started on port ${PORT}`);
 });
