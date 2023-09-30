@@ -9,9 +9,8 @@ router.get('/properties', async (req, res) => {
     SELECT * FROM properties
     WHERE TRUE 
     `;
-    
-    if (req.query) {
-      console.log(req.query.id);
+
+    if (req.query && Object.keys(req.query).length > 0) {
       queryParams.push(`${req.query.id}`);
       queryString += `AND id = $${queryParams.length} `;
     }

@@ -8,11 +8,9 @@ function App() {
 
   return (
     <Fragment>
-      {/* <PropertyList 
-        properties={properties}
-      /> */}
+      <PropertyList />
       {/* <AddProperty /> */}
-      <PropertyDetail />
+      {/* <PropertyDetail /> */}
     </Fragment>
   );
 }

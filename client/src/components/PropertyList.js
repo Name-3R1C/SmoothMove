@@ -7,6 +7,7 @@ export default function PropertyList(prop) {
   useEffect(() => {
     axios.get('/api/properties')
       .then((response) => {
+        console.log(response.data.properties.rows);
         setProperties(response.data.properties.rows);
       })
       .catch((error) => {
@@ -17,7 +18,7 @@ export default function PropertyList(prop) {
   return (
     <div className="container">
       <div className="row row-cols-1 row-cols-md-3">
-        {prop.properties.map((property) => (
+        {properties.map((property) => (
           <div key={property.id}>
             <div className='card'>
               <img src={property.thumbnail_photo_url} alt='type'/>
