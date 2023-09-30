@@ -46,7 +46,7 @@ Smooth Move is a user-friendly web application designed to streamline the proces
 
 #### 7. Communication and Notifications:
 
-- In-app messaging between landlords and tenants.
+- In-app messaging between landlords and tenants.(Optional)
 - Email and push notifications for important updates.
 - Announcements and alerts from property managers.
 
