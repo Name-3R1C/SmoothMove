@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function PropertyDetail(prop) {
-  console.log('PropertyDetai ---- ');
+export default function PropertyDetail({currentPropertyID, setCurrentProperty}) {
+  console.log('PropertyDetail ---- ');
   const [properties, setProperties] = useState([]);
 
-  const queryParams = { id: 1 };
-
   useEffect(() => {
-    axios.get('/api/properties/', { params: queryParams })
+    axios.get('/api/property-detail/', { params: {id: currentPropertyID} })
       .then((response) => {
         setProperties(response.data.properties.rows);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [currentPropertyID]);
 
   return (
     <div className="container">
       {properties.map((property) => (
         <div key={property.id}>
           <div className='card'>
+            <span onClick={() => setCurrentProperty(null)}> ❌ </span>
             <img src={property.thumbnail_photo_url} alt='type'/>
             <div className='card-body'>
               <h5 className='card-title'>${property.cost_per_month}</h5>
