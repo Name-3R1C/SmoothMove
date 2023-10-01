@@ -4,6 +4,7 @@ import axios from "axios";
 import PropertyDetail from "./PropertyDetail";
 
 function PropertySearch() {
+  const [searchQuery, setSearchQuery] = useState("all"); // Set the default search query to "all" or an empty string
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState(null);
@@ -11,17 +12,34 @@ function PropertySearch() {
   const handleSearch = async (query) => {
     try {
       setLoading(true);
-      console.log(query);
+      //console.log(query);
+      let queryParams = {};
+
+      // Check if searchQuery is not "all" or empty
+      if (searchQuery && searchQuery !== "all") {
+        queryParams.query = searchQuery;
+      }
       const encodedQuery = encodeURIComponent(query.query);
-      console.log(encodedQuery);
+      // console.log(encodedQuery);
+      // if (city) {
+      //   queryParams.city = city;
+      // }
+      // if (province) {
+      //   queryParams.province = province;
+      // }
+      // if (postcode) {
+      //   queryParams.postcode = postcode;
+      // }
       const response = await axios.get(`/api/properties/search`, {
         params: {
+          params: queryParams,
           query: encodedQuery,
           city: query.city,
           province: query.province,
           postcode: query.postcode,
         },
       });
+
       console.log(response.data);
       const data = response.data;
 
