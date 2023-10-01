@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.scss';
 import PropertyList from './components/PropertyList';
 import AddProperty from './components/AddProperty';
 import PropertyDetail from './components/PropertyDetail';
