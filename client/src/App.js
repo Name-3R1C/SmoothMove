@@ -5,6 +5,7 @@ import AddProperty from './components/AddProperty';
 import PropertyDetail from './components/PropertyDetail';
 import Header from './components/Header';
 import LoginSignup from './components/LoginSignup';
+import Footer from './components/Footer';
 
 const pages = {
   'PropertyList': 'PropertyList',
