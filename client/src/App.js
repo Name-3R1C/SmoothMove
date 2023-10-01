@@ -16,7 +16,7 @@ function App() {
   return (
     <main className='layout'>
       <header>This is nav bar</header>
-      
+      <div onClick={() => setPage(pages.AddProperty)}> Add Property </div>
       {page === pages.PropertyList && <PropertyList />}
       {page === pages.PropertyDetail && <PropertyDetail />}
       {page === pages.AddProperty && <AddProperty />}

@@ -9,7 +9,6 @@ export default function PropertyList(prop) {
   const getProperties = () => {
     axios.get('/api/properties')
     .then((response) => {
-      console.log(response.data.properties.rows);
       setProperties(response.data.properties.rows);
     })
     .catch((error) => {
