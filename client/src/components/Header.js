@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 
 export default function Header({ setPage }) {
-  console.log('Header ---- ');
 
   return (
     <header>
