@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import HeroSection from "./HeroSection";
 import axios from "axios";
+import PropertyDetail from "./PropertyDetail";
 
 function PropertySearch() {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [selectedProperty, setSelectedProperty] = useState(null);
 
   const handleSearch = async (query) => {
     try {
@@ -30,6 +32,15 @@ function PropertySearch() {
       setLoading(false);
     }
   };
+  // Function to open the property detail
+  const openPropertyDetail = (property) => {
+    setSelectedProperty(property);
+  };
+
+  // Function to close the property detail
+  const closePropertyDetail = () => {
+    setSelectedProperty(null);
+  };
 
   return (
     <div className="property-search bg-light">
@@ -46,12 +57,13 @@ function PropertySearch() {
                 <div className="card">
                   <img
                     src={property.thumbnail_photo_url}
-                    className="card-img-top img-fluid" // Apply Bootstrap classes
+                    className="card-img-top img-fluid"
                     alt={property.title}
-                    style={{ maxHeight: "200px" }} // Set max height for the image
+                    style={{ maxHeight: "200px" }}
                   />
                   <div className="card-body">
                     <h5 className="card-title">{property.title}</h5>
+
                     <p className="card-text">
                       <strong>Cost per Month:</strong> $
                       {property.cost_per_month}
@@ -74,6 +86,12 @@ function PropertySearch() {
                     <p className="card-text">
                       <strong>Postal Code:</strong> {property.post_code}
                     </p>
+                    <button
+                      onClick={() => openPropertyDetail(property)}
+                      className="btn btn-secondary rounded-pill text-white"
+                    >
+                      View Details
+                    </button>
                   </div>
                 </div>
               </div>
