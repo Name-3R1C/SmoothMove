@@ -1,35 +1,67 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
 
-export default function PropertyDetail(prop) {
-  console.log('PropertyDetai ---- ');
-  const [properties, setProperties] = useState([]);
+// export default function PropertyDetail(prop) {
+//   console.log('PropertyDetai ---- ');
+//   const [properties, setProperties] = useState([]);
 
-  const queryParams = { id: 1 };
+//   const queryParams = { id: 1 };
 
-  useEffect(() => {
-    axios.get('/api/properties/', { params: queryParams })
-      .then((response) => {
-        setProperties(response.data.properties.rows);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+//   useEffect(() => {
+//     axios.get('/api/properties/', { params: queryParams })
+//       .then((response) => {
+//         setProperties(response.data.properties.rows);
+//       })
+//       .catch((error) => {
+//         console.error(error);
+//       });
+//   }, []);
 
-  return (
-    <div className="container">
-      {properties.map((property) => (
-        <div key={property.id}>
-          <div className='card'>
-            <img src={property.thumbnail_photo_url} alt='type'/>
-            <div className='card-body'>
-              <h5 className='card-title'>${property.cost_per_month}</h5>
-              <p className='card-text'>{property.number_of_bedrooms} bed {property.number_of_bathrooms} bath {property.area} sqrt</p>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
+//   return (
+//     <div className="container">
+//       {properties.map((property) => (
+//         <div key={property.id}>
+//           <div className='card'>
+//             <img src={property.thumbnail_photo_url} alt='type'/>
+//             <div className='card-body'>
+//               <h5 className='card-title'>${property.cost_per_month}</h5>
+//               <p className='card-text'>{property.number_of_bedrooms} bed {property.number_of_bathrooms} bath {property.area} sqrt</p>
+//             </div>
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
+
+import React from "react";
+
+const PropertyDetail = ({ property, onClose }) => (
+  <div className="property-detail">
+    <h2>{property.title}</h2>
+    <p>
+      <strong>Cost per Month:</strong> ${property.costPerMonth}
+    </p>
+    <p>
+      <strong>Bedrooms:</strong> {property.bedrooms}
+    </p>
+    <p>
+      <strong>Bathrooms:</strong> {property.bathrooms}
+    </p>
+    <p>
+      <strong>Street:</strong> {property.street}
+    </p>
+    <p>
+      <strong>City:</strong> {property.city}
+    </p>
+    <p>
+      <strong>Province:</strong> {property.province}
+    </p>
+    <p>
+      <strong>Postal Code:</strong> {property.postcode}
+    </p>
+    <button onClick={onClose}>Close</button>
+  </div>
+);
+
+export default PropertyDetail;
