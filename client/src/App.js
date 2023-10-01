@@ -3,7 +3,7 @@ import './App.scss';
 import PropertyList from './components/PropertyList';
 import AddProperty from './components/AddProperty';
 import PropertyDetail from './components/PropertyDetail';
-import Header from './components/Header';
+import Navbar from './components/Navbar';
 import LoginSignup from './components/LoginSignup';
 
 const pages = {
@@ -18,7 +18,7 @@ function App() {
 
   return (
     <main className='layout'>
-      <Header setPage={setPage}/>
+      <Navbar setPage={setPage}/>
       {page === pages.PropertyList && <PropertyList />}
       {page === pages.PropertyDetail && <PropertyDetail />}
       {page === pages.AddProperty && <AddProperty />}

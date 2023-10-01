@@ -1,13 +1,13 @@
 import React from 'react';
-import axios from 'axios';
+import './Navbar.scss'
 
-export default function Header({ setPage }) {
+export default function Navbar({ setPage }) {
 
   return (
-    <header>
+    <nav>
       <h2 onClick={() => setPage('PropertyList')}><span style={{color: 'red'}}>SMOOTH</span>MOVE.INC</h2>
       <h4 onClick={() => setPage('AddProperty')}> Add Property </h4>
       <h4 onClick={() => setPage('LoginSignup')}>Login/Signup</h4>
-    </header>
+    </nav>
   );
 };
