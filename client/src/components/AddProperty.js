@@ -137,6 +137,7 @@ export default function AddProperty(prop) {
       .post("/api/properties", { property: property })
       .then((res) => {
         console.log(res.data);
+        window.location.reload();
       })
       .catch((e) => {
         console.error(e);
