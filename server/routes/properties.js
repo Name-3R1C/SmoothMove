@@ -34,24 +34,39 @@ router.get("/properties", async (req, res) => {
   }
 });
 
-router.get("/property-detail", async (req, res) => {
-  try {
-    console.log("server - index - get - property-detail");
-    const queryParams = [];
-    let queryString = `
-    SELECT * FROM properties
-    WHERE TRUE 
-    `;
+// router.get("/property-detail", async (req, res) => {
+//   try {
+//     console.log("server - index - get - property-detail");
+//     const queryParams = [];
+//     let queryString = `
+//     SELECT * FROM properties
+//     WHERE TRUE
+//     `;
 
-    if (req.query && Object.keys(req.query).length > 0) {
-      queryParams.push(`${req.query.id}`);
-      queryString += `AND id = $${queryParams.length} `;
+//     if (req.query && Object.keys(req.query).length > 0) {
+//       queryParams.push(`${req.query.id}`);
+//       queryString += `AND id = $${queryParams.length} `;
+//     }
+
+//     await db.query(queryString, queryParams).then((properties) => {
+//       console.log(properties);
+//       res.send({ properties });
+//     });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Server error" });
+//   }
+// });
+router.get("/property/:id", async (req, res) => {
+  try {
+    const propertyId = req.params.id;
+    const property = await db.getPropertyById(propertyId);
+
+    if (!property) {
+      return res.status(404).json({ error: "Property not found" });
     }
 
-    await db.query(queryString, queryParams).then((properties) => {
-      console.log(properties);
-      res.send({ properties });
-    });
+    res.json({ property });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });

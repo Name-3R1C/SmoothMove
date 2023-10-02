@@ -19,6 +19,15 @@ const queryDatabase = (sql, params) => {
   });
 };
 
+const getPropertyById = async (propertyId) => {
+  const sql = "SELECT * FROM properties WHERE id = $1";
+  const params = [propertyId];
+
+  const result = await queryDatabase(sql, params);
+
+  return result.length > 0 ? result[0] : null;
+};
+
 const getAllProperties = (query, city, province, postcode, limit = 10) => {
   const queryParams = [];
   let queryString = `
@@ -50,4 +59,4 @@ const getAllProperties = (query, city, province, postcode, limit = 10) => {
   return queryDatabase(queryString, queryParams);
 };
 
-module.exports = { pool, getAllProperties };
+module.exports = { pool, getAllProperties, getPropertyById };

@@ -24,7 +24,7 @@ function App() {
       {page === pages.PropertyDetail && <PropertyDetail />}
       {page === pages.AddProperty && <AddProperty />}
       {page === pages.LoginSignup && <LoginSignup />}
-      <PropertySearch />
+      {page === pages.PropertyList && <PropertySearch />}
     </main>
   );
 }

@@ -9,7 +9,7 @@ function PropertySearch() {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState(null);
-  const [searchPerformed, setSearchPerformed] = useState(false); // Track if a search has been performed
+  const [searchPerformed, setSearchPerformed] = useState(false);
 
   const handleSearch = async (query) => {
     try {
