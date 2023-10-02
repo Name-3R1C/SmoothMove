@@ -87,17 +87,40 @@ export default function PropertyList(prop) {
         <div className="row row-cols-1 row-cols-md-3">
           {properties && properties.length > 0 ? (
             properties.map((property) => (
-              <div key={property.id}>
+              <div key={property.id} className="col-md-4 mb-3">
                 <div
                   className="card"
                   onClick={() => setCurrentProperty(property.id)}
                 >
-                  <img src={property.thumbnail_photo_url} alt="type" />
+                  <img
+                    src={property.thumbnail_photo_url}
+                    className="card-img-top img-fluid"
+                    alt={property.title}
+                    style={{ maxHeight: "200px" }}
+                  />
                   <div className="card-body">
-                    <h5 className="card-title">${property.cost_per_month}</h5>
+                    <h5 className="card-title">{property.title}</h5>
                     <p className="card-text">
-                      {property.number_of_bedrooms} bed{" "}
-                      {property.number_of_bathrooms} bath {property.area} sqrt
+                      <strong>Cost per Month:</strong> $
+                      {property.cost_per_month}
+                    </p>
+                    <p className="card-text">
+                      <strong>Bedrooms:</strong> {property.number_of_bedrooms}
+                    </p>
+                    <p className="card-text">
+                      <strong>Bathrooms:</strong> {property.number_of_bathrooms}
+                    </p>
+                    <p className="card-text">
+                      <strong>Street:</strong> {property.street}
+                    </p>
+                    <p className="card-text">
+                      <strong>City:</strong> {property.city}
+                    </p>
+                    <p className="card-text">
+                      <strong>Province:</strong> {property.province}
+                    </p>
+                    <p className="card-text">
+                      <strong>Postal Code:</strong> {property.post_code}
                     </p>
                   </div>
                 </div>
