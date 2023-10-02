@@ -2,24 +2,35 @@ const router = require("express").Router();
 const db = require("../db");
 const database = require("../db");
 
+// router.get("/properties", async (req, res) => {
+//   try {
+//     console.log("server - index - get - properties");
+
+//     await db
+//       .query(
+//         `
+//     SELECT * FROM properties
+//     WHERE TRUE
+//     `
+//       )
+//       .then((properties) => {
+//         console.log(properties);
+//         res.send({ properties });
+//       });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: "Server error" });
+//   }
+// });
+
+// Default route to display all properties
 router.get("/properties", async (req, res) => {
   try {
-    console.log("server - index - get - properties");
-
-    await db
-      .query(
-        `
-    SELECT * FROM properties
-    WHERE TRUE 
-    `
-      )
-      .then((properties) => {
-        console.log(properties);
-        res.send({ properties });
-      });
+    const properties = await db.getAllProperties(); // Call getAllProperties with no filter criteria to get all properties
+    res.send({ properties });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Server error" });
+    console.error("Error fetching all properties:", error);
+    res.status(500).send("Internal Server Error");
   }
 });
 

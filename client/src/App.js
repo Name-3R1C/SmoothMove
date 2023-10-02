@@ -20,7 +20,7 @@ function App() {
   return (
     <main className="layout">
       <Navbar setPage={setPage} />
-      {page === pages.PropertyList && <PropertyList />}
+      {/* {page === pages.PropertyList && <PropertyList />} */}
       {page === pages.PropertyDetail && <PropertyDetail />}
       {page === pages.AddProperty && <AddProperty />}
       {page === pages.LoginSignup && <LoginSignup />}
