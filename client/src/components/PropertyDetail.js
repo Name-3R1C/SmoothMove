@@ -1,45 +1,3 @@
-// import React, { useEffect, useState } from "react";
-// import axios from "axios";
-
-// export default function PropertyDetail({
-//   currentPropertyID,
-//   setCurrentProperty,
-// }) {
-//   console.log("PropertyDetail ---- ");
-//   const [property, setProperty] = useState([]);
-
-//   useEffect(() => {
-//     axios
-//       .get("/api/property-detail/", { params: { id: currentPropertyID } })
-//       .then((response) => {
-//         console.log(response.data.properties.rows[0]);
-//         setProperty(response.data.properties.rows[0]);
-//         // console.log(property)
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//       });
-//   }, [currentPropertyID]);
-
-//   return (
-//     <div className="container">
-//       <div key={property.id}>
-//         <div className="card">
-//           <span onClick={() => setCurrentProperty(null)}> ❌ </span>
-//           <img src={property.cover_photo_url} alt="type" />
-//           <div className="card-body">
-//             <h5 className="card-title">${property.cost_per_month}</h5>
-//             <p className="card-text">
-//               {property.number_of_bedrooms} bed {property.number_of_bathrooms}{" "}
-//               bath {property.area} sqrt
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -48,6 +6,8 @@ export default function PropertyDetail({
   setCurrentProperty,
 }) {
   const [property, setProperty] = useState(null);
+  const [images, setImages] = useState([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     // Define the URL to fetch property details by ID
@@ -57,11 +17,23 @@ export default function PropertyDetail({
       .get(url)
       .then((response) => {
         setProperty(response.data.property);
+        setImages(response.data.property.images);
       })
       .catch((error) => {
         console.error(error);
       });
   }, [currentPropertyID]);
+
+  const handlePictureChange = (nextIndex) => {
+    const newIndex = (nextIndex + images.length) % images.length;
+    setCurrentImageIndex(newIndex);
+  };
+
+  const imageWidth = "400px"; // Adjust the desired width
+  const imageHeight = "500px"; // Adjust the desired height
+
+  // Configure the interval (in milliseconds) for the carousel transition
+  const carouselInterval = 3000; // Adjust the desired interval (e.g., 3000 ms = 3 seconds)
 
   return (
     <div className="container mt-5">
@@ -76,11 +48,66 @@ export default function PropertyDetail({
               ❌
             </span>
           </div>
-          <img
-            src={property.cover_photo_url}
-            className="card-img-top img-fluid"
-            alt="Property"
-          />
+          <div
+            id="propertyCarousel"
+            className="carousel slide"
+            data-ride="carousel"
+            data-interval={carouselInterval}
+          >
+            <ol className="carousel-indicators">
+              {images.map((_, index) => (
+                <li
+                  key={index}
+                  data-target="#propertyCarousel"
+                  data-slide-to={index}
+                  className={index === currentImageIndex ? "active" : ""}
+                ></li>
+              ))}
+            </ol>
+            <div className="carousel-inner">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className={`carousel-item ${
+                    index === currentImageIndex ? "active" : ""
+                  }`}
+                >
+                  <img
+                    src={image}
+                    className="d-block w-100"
+                    alt={`Property Image ${index}`}
+                    style={{ width: imageWidth, height: imageHeight }}
+                  />
+                </div>
+              ))}
+            </div>
+            <a
+              className="carousel-control-prev"
+              href="#propertyCarousel"
+              role="button"
+              data-slide="prev"
+              onClick={() => handlePictureChange(currentImageIndex - 1)}
+            >
+              <span
+                className="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="sr-only">Previous</span>
+            </a>
+            <a
+              className="carousel-control-next"
+              href="#propertyCarousel"
+              role="button"
+              data-slide="next"
+              onClick={() => handlePictureChange(currentImageIndex + 1)}
+            >
+              <span
+                className="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="sr-only">Next</span>
+            </a>
+          </div>
           <div className="card-body">
             <h5 className="card-title">{property.title}</h5>
             <p className="card-text">{property.description}</p>

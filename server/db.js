@@ -61,12 +61,27 @@ const addProperty = async (property) => {
 };
 
 const getPropertyById = async (propertyId) => {
-  const sql = "SELECT * FROM properties WHERE id = $1";
+  const sql = `
+    SELECT properties.*, images.photo_url
+    FROM properties
+    LEFT JOIN images ON properties.id = images.property_id
+    WHERE properties.id = $1;
+  `;
   const params = [propertyId];
 
   const result = await queryDatabase(sql, params);
+  console.log("result", result);
+  if (result.length === 0) {
+    return null;
+  }
 
-  return result.length > 0 ? result[0] : null;
+  // Group images by property ID
+  const property = {
+    ...result[0],
+    images: result.map((row) => row.photo_url).filter((url) => url !== null),
+  };
+  console.log("property :", property);
+  return property;
 };
 
 const getAllProperties = (query, city, province, postcode, limit = 10) => {

@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import LoginSignup from "./components/LoginSignup";
 import PropertySearch from "./components/PropertySearch";
 
+
 const pages = {
   PropertyList: "PropertyList",
   PropertyDetail: "PropertyDetail",
@@ -21,7 +22,7 @@ function App() {
     <main className="layout">
       <Navbar setPage={setPage} />
       {/* {page === pages.PropertyList && <PropertyList />} */}
-      {page === pages.PropertyDetail && <PropertyDetail />}
+      {/* {page === pages.PropertyDetail && <PropertyDetail />} */}
       {page === pages.AddProperty && <AddProperty />}
       {page === pages.LoginSignup && <LoginSignup />}
       {page === pages.PropertyList && <PropertySearch />}

@@ -38,3 +38,21 @@ INSERT INTO properties (
     title, description, owner_id, cover_photo_url, thumbnail_photo_url, area, cost_per_month, number_of_bathrooms, number_of_bedrooms, created_at, active, province, city, country, street, post_code)
     VALUES (
     'Political every', 'Yet have shape feature finally replace former national lie block pupil invented plus wheel practical certain ordinary picture rays bag bank struggle direction naturally thirty football grain white source folks immediately road difficulty ill gently stranger frozen cabin voyage period cup managed attention volume red pretty consist them taught garden fifteen border think quick full shells passage peace loss please word unknown stronger unknown everything zero when plus instance lucky farmer better seat garage difficulty bent characteristic scale friend glass foot path buy high compound plus series fort printed nearest yet afternoon largest traffic gift whom wood quite walk search suppose neck amount contrast flame construction probably broke east excellent forget image put traffic is shop discuss season hay cannot region generally stage lonely expression layers fairly station ear combination myself hurry copper thirty nation pride yet sleep nose better repeat solar shoot settlers pencil ask heavy average express pictured alone general thread wolf certainly balance circus tin mistake accident basket ranch wooden swung street kind board swim cry arm specific grown common pink rocky pair support furniture slope forest news arrive sure coal spider sale film opposite beside anyone best government seems its obtain shoulder prove upper not raw oxygen thou mice business skin establish finish want slight best frame trouble diameter clean shells felt naturally parent ate exchange afraid leaf wet valuable start iron worker any pet moment mill here outer check over owner sell purple donkey protection object paid softly specific office port frighten real chest scientific bridge most species temperature carbon any keep about already flat advice fellow getting me plant plenty trail dear pony vegetable obtain mine physical glass brave swimming continent pure longer replied physical exist earlier related complex conversation mixture work win spoken bus jet fallen notice represent perhaps firm orange shall motion', 1, 'https://images.pexels.com/photos/2078875/pexels-photo-2078875.jpeg', 'https://images.pexels.com/photos/2078875/pexels-photo-2078875.jpeg?auto=compress&cs=tinysrgb&h=350', 9165, 1300, 6, 3, '2023-06-22', true, 'Saskatchewan', 'Tisdale', 'Canada', '831 Onaca Center', '39818');
+
+
+
+INSERT INTO properties (owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_month, area, number_of_bathrooms, number_of_bedrooms, country, street, city, province, post_code, active)
+VALUES
+  (1, 'Downtown Condo', 'A modern condo in downtown Toronto.', 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m2982114084od-w480_h360_x2.jpg', 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3389156154od-w1024_h768_x2.jpg', 2200, 900, 2, 1, 'Canada', '123 King St', 'Toronto', 'ON', 'M5V 1J9', true);
+
+
+INSERT INTO images (property_id, photo_url)
+VALUES
+  (22, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m2626392529od-w1024_h768_x2.jpg'),
+  (22, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3838170680od-w1024_h768_x2.jpg'),
+  (22, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
+
+
+
+
+<img data-src="https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg" data-testid="vertical-gallery-item-8" alt="Kitchen featured at 2550 W Bird St Unit 2550, Tampa, FL 33614" src="https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg" srcset="https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg, https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg 2x">
