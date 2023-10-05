@@ -48,11 +48,11 @@ VALUES
 
 INSERT INTO images (property_id, photo_url)
 VALUES
-  (22, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m2626392529od-w1024_h768_x2.jpg'),
-  (22, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3838170680od-w1024_h768_x2.jpg'),
-  (22, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
+  (2, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m2626392529od-w1024_h768_x2.jpg'),
+  (2, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3838170680od-w1024_h768_x2.jpg'),
+  (2, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
 
 
 
 
-<img data-src="https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg" data-testid="vertical-gallery-item-8" alt="Kitchen featured at 2550 W Bird St Unit 2550, Tampa, FL 33614" src="https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg" srcset="https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg, https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg 2x">
+-- <img data-src="https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg" data-testid="vertical-gallery-item-8" alt="Kitchen featured at 2550 W Bird St Unit 2550, Tampa, FL 33614" src="https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg" srcset="https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg, https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m4239299651od-w1024_h768_x2.jpg 2x">

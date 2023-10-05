@@ -19,18 +19,18 @@ export default function Navbar({ setPage }) {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav">
           <a
-            class="nav-item nav-link active"
+            className="nav-item nav-link active"
             onClick={() => setPage("PropertyList")}
           >
             Home
           </a>
-          <a class="nav-item nav-link" onClick={() => setPage("AddProperty")}>
+          <a className="nav-item nav-link" onClick={() => setPage("AddProperty")}>
             Add Property
           </a>
-          <a class="nav-item nav-link" onClick={() => setPage("LoginSignup")}>
+          <a className="nav-item nav-link" onClick={() => setPage("LoginSignup")}>
             Login/Signup
           </a>
         </div>

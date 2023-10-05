@@ -1,8 +1,8 @@
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  user: "vagrant",
-  password: "123",
+  user: "postgres",
+  password: "2123",
   host: "localhost",
   port: "5432",
   database: "smoothmove",
@@ -115,4 +115,23 @@ const getAllProperties = (query, city, province, postcode, limit = 10) => {
   return queryDatabase(queryString, queryParams);
 };
 
-module.exports = { pool, getAllProperties, getPropertyById, addProperty };
+const addUser = async ({ name, email, hashedPassword}) => {
+  const sql = `
+    INSERT INTO users (
+      name,
+      email,
+      password
+    ) VALUES ($1, $2, $3) RETURNING *`;
+
+  const params = [
+    name,
+    email,
+    hashedPassword
+  ];
+
+  const result = await queryDatabase(sql, params);
+
+  return result[0];
+};
+
+module.exports = { pool, getAllProperties, getPropertyById, addProperty, addUser };
