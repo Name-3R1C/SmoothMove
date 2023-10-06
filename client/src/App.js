@@ -15,15 +15,19 @@ const pages = {
 
 function App() {
   const [page, setPage] = useState(pages.PropertyList);
-  const [cookies, setCookie] = useCookies(['user']);
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
 
   function handleLogin(user) {
     setCookie("user", user);
-  }
+  };
+
+  function handleLogout(user) {
+    removeCookie('user');
+  };
 
   return (
     <main className="layout">
-      <Navbar setPage={setPage} userName={cookies.user}/>
+      <Navbar setPage={setPage} userName={cookies.user} logout={handleLogout} />
       {console.log('cookies: ', cookies.user)}
       {page === pages.AddProperty && <AddProperty />}
       {page === pages.LoginSignup && <LoginSignup onLogin={handleLogin} />}

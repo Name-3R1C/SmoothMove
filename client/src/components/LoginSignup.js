@@ -34,26 +34,45 @@ export default function LoginSignup({ onLogin }) {
       });
   };
 
+  const signin = () => {
+    console.log('signin ---', user);
+    axios
+      .post("/api/signin", { user: user })
+      .then ((res) => {
+        if (isNaN(res.data.userID)){
+          setResponseMessage(res.data);
+        } else {
+          console.log('set cookie with ', res.data);
+          setResponseMessage('');
+          onLogin(res.data);
+        }
+      })
+      .catch((e) => {
+        console.error(e.data);
+        setResponseMessage("An error occurred.");
+      });
+  };
+
   return (
     <div className='signuplogin'>
+      {responseMessage && <div className="response-message">{responseMessage}</div>}
       <div className="login card-body px-4 py-5 px-md-5 column">
-        <h2>Log in</h2>
-        <div className="form-outline mb-4">
+        <h2>Log In</h2>
+        <div className="form-outline mb-4" onChange={(event) => setUser({...user, email: event.target.value})}>
           <input type="email" id="form2Example1" className="form-control" />
           <label className="form-label" htmlFor="form2Example1">Email address</label>
         </div>
 
-        <div className="form-outline mb-4">
+        <div className="form-outline mb-4" onChange={(event) => setUser({...user, password: event.target.value})}>
           <input type="password" id="form2Example2" className="form-control" />
           <label className="form-label" htmlFor="form2Example2">Password</label>
         </div>
 
-        <button type="button" className="btn btn-primary btn-block mb-4">Sign in</button>
+        <button type="button" className="btn btn-primary btn-block mb-4" onClick={signin}>Sign in</button>
       </div>
 
       <div className="signup card-body px-4 py-5 px-md-5 column">
         <h2>Sign Up</h2>
-        {responseMessage && <div className="response-message">{responseMessage}</div>}
         <div className="row">
           <div className="col-md-6 mb-4" onChange={(event) => setUser({...user, firstName: event.target.value})}>
             <div className="form-outline">
