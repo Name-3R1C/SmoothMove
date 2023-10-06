@@ -25,7 +25,7 @@ router.post("/register", async (req, res) => {
     
     const addedUser = await db.addUser({firstName, lastName, email, hashedPassword});
     console.log('addedUser----- ', addedUser.id);
-    res.status(201).json(addedUser.id);
+    res.status(201).json({ userID:addedUser.id, firstName:firstName});
 
   } catch (error) {
     console.error(error);

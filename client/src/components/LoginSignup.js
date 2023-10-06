@@ -19,10 +19,12 @@ export default function LoginSignup({ onLogin }) {
     axios
       .post("/api/register", { user: user })
       .then ((res) => {
-        if (isNaN(res.data)){
+        if (isNaN(res.data.userID)){
           setResponseMessage(res.data);
         } else {
-          console.log('Cookie with id ', res.data);
+          console.log('set cookie with ', res.data);
+          // console.log('Cookie with id ', res.data.userID);
+          // console.log('Cookie with name ', res.data.firstName);
           onLogin(res.data);
         }
       })
@@ -31,10 +33,6 @@ export default function LoginSignup({ onLogin }) {
         setResponseMessage("An error occurred.");
       });
   };
-
-  function handleSubmit(id) {
-    onLogin(id);// send user ID
-  }
 
   return (
     <div className='signuplogin'>

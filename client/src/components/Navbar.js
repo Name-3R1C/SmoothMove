@@ -2,11 +2,11 @@ import React from "react";
 import "./Navbar.scss";
 import AddProperty from "./AddProperty";
 
-export default function Navbar({ setPage }) {
+export default function Navbar({ setPage, userName }) {
   return (
     <nav className="navbar navbar-expand navbar-light bg-light">
       <a className="navbar-brand" onClick={() => setPage("PropertyList")}>
-        <span style={{ color: "red" }}>SMOOTH</span>MOVE.INC
+        <span className="name_red">SMOOTH</span>MOVE.INC
       </a>
       <button
         className="navbar-toggler"
@@ -30,9 +30,10 @@ export default function Navbar({ setPage }) {
           <a className="nav-item nav-link" onClick={() => setPage("AddProperty")}>
             Add Property
           </a>
-          <a className="nav-item nav-link" onClick={() => setPage("LoginSignup")}>
+
+          {userName ? <a className="nav-item nav-link">Welcome: {userName.firstName}</a> : <a className="nav-item nav-link" onClick={() => setPage("LoginSignup")}>
             Login/Signup
-          </a>
+          </a>}
         </div>
       </div>
     </nav>

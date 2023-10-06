@@ -111,7 +111,7 @@ const getAllProperties = (query, city, province, postcode, limit = 10) => {
     queryString += ` AND post_code LIKE $${queryParams.length} `;
   }
 
-  console.log(queryString);
+  // console.log(queryString);
   return queryDatabase(queryString, queryParams);
 };
 
