@@ -11,14 +11,17 @@ router.post("/register", async (req, res) => {
     const password = req.body.user.password;
     const hashedPassword = bcrypt.hashSync(password, 10);
 
+    if (!firstName || !lastName) {
+      return res.send("Please provide an First and Last name");
+    }
     if (!email || !password) {
-      return res.status(400).send("Please provide an E-mail and password");
+      return res.send("Please provide an E-mail and password");
     }
 
     const userExists = await db.getUserByEmail(email);
     if (userExists) {
       console.log('userExist----', userExists);
-      return res.status(409).send("E-mail already registed");
+      return res.send("E-mail already registed");
     }
     
     const addedUser = await db.addUser({firstName, lastName, email, hashedPassword});
