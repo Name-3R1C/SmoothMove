@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.scss";
+import { useCookies } from 'react-cookie';
 import AddProperty from "./components/AddProperty";
 import Navbar from "./components/Navbar";
 import LoginSignup from "./components/LoginSignup";
@@ -14,15 +15,18 @@ const pages = {
 
 function App() {
   const [page, setPage] = useState(pages.PropertyList);
-  const [user, setUser] = useState();
+  const [cookies, setCookie] = useCookies(['userID']);
+
+  function handleLogin(id) {
+    setCookie("userID", id);
+  }
 
   return (
     <main className="layout">
       <Navbar setPage={setPage} />
-      {/* {page === pages.PropertyList && <PropertyList />} */}
-      {/* {page === pages.PropertyDetail && <PropertyDetail />} */}
+      {console.log('cookies: ', cookies.userID)}
       {page === pages.AddProperty && <AddProperty />}
-      {page === pages.LoginSignup && <LoginSignup />}
+      {page === pages.LoginSignup && <LoginSignup onLogin={handleLogin} />}
       {page === pages.PropertyList && <PropertySearch />}
     </main>
   );

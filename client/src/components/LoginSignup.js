@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './LoginSignup.scss'
 
-export default function LoginSignup(props) {
+export default function LoginSignup({ onLogin }) {
   console.log('LoginSignup ---- ');
-  // Sign In
-
 
   // Sign Up
   const [user, setUser] = useState({
@@ -17,18 +15,26 @@ export default function LoginSignup(props) {
 
   const [responseMessage, setResponseMessage] = useState("");
   const addUser = () => {
-    console.log('user', user);
+    console.log('addUser ---', user);
     axios
       .post("/api/register", { user: user })
       .then ((res) => {
-        console.log('res', res.data);
-        setResponseMessage(res.data);
+        if (isNaN(res.data)){
+          setResponseMessage(res.data);
+        } else {
+          console.log('Cookie with id ', res.data);
+          onLogin(res.data);
+        }
       })
       .catch((e) => {
         console.error(e.data);
         setResponseMessage("An error occurred.");
       });
   };
+
+  function handleSubmit(id) {
+    onLogin(id);// send user ID
+  }
 
   return (
     <div className='signuplogin'>

@@ -4,7 +4,7 @@ import AddProperty from "./AddProperty";
 
 export default function Navbar({ setPage }) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand navbar-light bg-light">
       <a className="navbar-brand" onClick={() => setPage("PropertyList")}>
         <span style={{ color: "red" }}>SMOOTH</span>MOVE.INC
       </a>

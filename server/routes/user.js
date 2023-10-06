@@ -20,12 +20,12 @@ router.post("/register", async (req, res) => {
 
     const userExists = await db.getUserByEmail(email);
     if (userExists) {
-      console.log('userExist----', userExists);
       return res.send("E-mail already registed");
     }
     
     const addedUser = await db.addUser({firstName, lastName, email, hashedPassword});
-    res.status(201).json('Added New User');
+    console.log('addedUser----- ', addedUser.id);
+    res.status(201).json(addedUser.id);
 
   } catch (error) {
     console.error(error);
