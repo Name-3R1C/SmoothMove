@@ -18,7 +18,7 @@ app.use(bodyparser.json());
 
 // ROUTES // 
 const properties = require("./routes/properties");
-const user = require("./routes/user")
+const user = require("./routes/user");
 
 app.use("/api", properties);
 app.use("/api", user);

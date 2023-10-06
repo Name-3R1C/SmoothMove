@@ -115,16 +115,18 @@ const getAllProperties = (query, city, province, postcode, limit = 10) => {
   return queryDatabase(queryString, queryParams);
 };
 
-const addUser = async ({ name, email, hashedPassword}) => {
+const addUser = async ({ firstName, lastName, email, hashedPassword}) => {
   const sql = `
     INSERT INTO users (
-      name,
+      first_name,
+      last_name,
       email,
       password
-    ) VALUES ($1, $2, $3) RETURNING *`;
+    ) VALUES ($1, $2, $3, $4) RETURNING *`;
 
   const params = [
-    name,
+    firstName,
+    lastName,
     email,
     hashedPassword
   ];
@@ -134,4 +136,15 @@ const addUser = async ({ name, email, hashedPassword}) => {
   return result[0];
 };
 
-module.exports = { pool, getAllProperties, getPropertyById, addProperty, addUser };
+const getUserByEmail = async (email) => {
+  const sql = `
+    SELECT *
+    FROM users
+    WHERE LOWER(email) = LOWER($1)
+  `;
+
+  const result = await queryDatabase(sql, [email]);
+  return result[0];
+};
+
+module.exports = { pool, getAllProperties, getPropertyById, addProperty, addUser, getUserByEmail };

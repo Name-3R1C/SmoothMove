@@ -64,7 +64,6 @@ export default function PropertyList(prop) {
     axios
       .get("/api/properties")
       .then((response) => {
-        console.log(response.data.properties);
         setProperties(response.data.properties);
       })
       .catch((error) => {

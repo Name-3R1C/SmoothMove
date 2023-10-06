@@ -7,7 +7,6 @@ import Navbar from "./components/Navbar";
 import LoginSignup from "./components/LoginSignup";
 import PropertySearch from "./components/PropertySearch";
 
-
 const pages = {
   PropertyList: "PropertyList",
   PropertyDetail: "PropertyDetail",
