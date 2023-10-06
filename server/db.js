@@ -70,7 +70,7 @@ const getPropertyById = async (propertyId) => {
   const params = [propertyId];
 
   const result = await queryDatabase(sql, params);
-  console.log("result", result);
+  //console.log("result", result);
   if (result.length === 0) {
     return null;
   }
@@ -80,7 +80,7 @@ const getPropertyById = async (propertyId) => {
     ...result[0],
     images: result.map((row) => row.photo_url).filter((url) => url !== null),
   };
-  console.log("property :", property);
+  //console.log("property :", property);
   return property;
 };
 
@@ -111,8 +111,48 @@ const getAllProperties = (query, city, province, postcode, limit = 10) => {
     queryString += ` AND post_code LIKE $${queryParams.length} `;
   }
 
-  console.log(queryString);
+  //console.log(queryString);
   return queryDatabase(queryString, queryParams);
 };
 
-module.exports = { pool, getAllProperties, getPropertyById, addProperty };
+const deletePropertyById = async (propertyId) => {
+  try {
+    // First, delete associated images, if any
+    const deleteImagesQuery = `
+      DELETE FROM images
+      WHERE property_id = $1
+    `;
+    const deleteImagesParams = [propertyId];
+
+    await queryDatabase(deleteImagesQuery, deleteImagesParams);
+
+    // Then, delete the property itself
+    const deletePropertyQuery = `
+      DELETE FROM properties
+      WHERE id = $1
+      RETURNING *;
+    `;
+    const deletePropertyParams = [propertyId];
+    const result = await queryDatabase(
+      deletePropertyQuery,
+      deletePropertyParams
+    );
+    console.log("result.length", result.length);
+    if (result.length === 0) {
+      return null; // Property with the given ID was not found
+    }
+    console.log("result[0]", result[0]);
+    return result[0];
+  } catch (error) {
+    console.error("Error deleting property:", error);
+    throw error;
+  }
+};
+
+module.exports = {
+  pool,
+  getAllProperties,
+  getPropertyById,
+  addProperty,
+  deletePropertyById,
+};

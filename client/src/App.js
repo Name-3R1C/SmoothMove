@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import "./App.scss";
-import PropertyList from "./components/PropertyList";
 import AddProperty from "./components/AddProperty";
-import PropertyDetail from "./components/PropertyDetail";
 import Navbar from "./components/Navbar";
 import LoginSignup from "./components/LoginSignup";
 import PropertySearch from "./components/PropertySearch";
-
 
 const pages = {
   PropertyList: "PropertyList",

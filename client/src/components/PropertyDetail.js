@@ -4,6 +4,7 @@ import axios from "axios";
 export default function PropertyDetail({
   currentPropertyID,
   setCurrentProperty,
+  onPropertyDeleted,
 }) {
   const [property, setProperty] = useState(null);
   const [images, setImages] = useState([]);
@@ -34,7 +35,19 @@ export default function PropertyDetail({
 
   // Configure the interval (in milliseconds) for the carousel transition
   const carouselInterval = 3000; // Adjust the desired interval (e.g., 3000 ms = 3 seconds)
+  const handleDeleteProperty = async () => {
+    try {
+      // Send a DELETE request to delete the property
+      await axios.delete(`/api/property/${currentPropertyID}`);
+      onPropertyDeleted(currentPropertyID);
+      alert("Property deleted successfully");
+      setCurrentProperty(null);
+    } catch (error) {
+      console.error("Error deleting property:2", error);
 
+      alert("Error deleting property. Please try again later.");
+    }
+  };
   return (
     <div className="container mt-5">
       {property ? (
@@ -75,7 +88,7 @@ export default function PropertyDetail({
                   <img
                     src={image}
                     className="d-block w-100"
-                    alt={`Property Image ${index}`}
+                    alt={`Property ${index + 1}`}
                     style={{ width: imageWidth, height: imageHeight }}
                   />
                 </div>
@@ -117,6 +130,10 @@ export default function PropertyDetail({
               <strong>Address:</strong> {property.street}, {property.city},{" "}
               {property.province}, {property.post_code}
             </p>
+
+            <button className="btn btn-danger" onClick={handleDeleteProperty}>
+              Delete Property
+            </button>
           </div>
         </div>
       ) : (

@@ -2,27 +2,6 @@ const router = require("express").Router();
 const db = require("../db");
 const database = require("../db");
 
-// router.get("/properties", async (req, res) => {
-//   try {
-//     console.log("server - index - get - properties");
-
-//     await db
-//       .query(
-//         `
-//     SELECT * FROM properties
-//     WHERE TRUE
-//     `
-//       )
-//       .then((properties) => {
-//         console.log(properties);
-//         res.send({ properties });
-//       });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Server error" });
-//   }
-// });
-
 // Default route to display all properties
 router.get("/properties", async (req, res) => {
   try {
@@ -34,31 +13,9 @@ router.get("/properties", async (req, res) => {
   }
 });
 
-// router.get("/property-detail", async (req, res) => {
-//   try {
-//     console.log("server - index - get - property-detail");
-//     const queryParams = [];
-//     let queryString = `
-//     SELECT * FROM properties
-//     WHERE TRUE
-//     `;
-
-//     if (req.query && Object.keys(req.query).length > 0) {
-//       queryParams.push(`${req.query.id}`);
-//       queryString += `AND id = $${queryParams.length} `;
-//     }
-
-//     await db.query(queryString, queryParams).then((properties) => {
-//       console.log(properties);
-//       res.send({ properties });
-//     });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Server error" });
-//   }
-// });
 router.get("/property/:id", async (req, res) => {
   try {
+    console.log(req.params.id);
     const propertyId = req.params.id;
     const property = await db.getPropertyById(propertyId);
 
@@ -104,6 +61,26 @@ router.get("/properties/search", async (req, res) => {
   } catch (error) {
     console.error("Error searching for properties:", error);
     res.status(500).send("Internal Server Error");
+  }
+});
+
+// Define a route to delete a property by ID
+
+router.delete("/property/:id", async (req, res) => {
+  try {
+    const propertyId = req.params.id;
+    // Call the deletePropertyById function from your db.js module
+    const deletedProperty = await db.deletePropertyById(propertyId);
+
+    if (!deletedProperty) {
+      return res.status(404).json({ error: "Property not found" });
+    }
+
+    // Additional action: Redirect to a different page
+    res.send("/properties");
+  } catch (error) {
+    console.error("Error deleting property:1", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
