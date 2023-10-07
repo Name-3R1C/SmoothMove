@@ -1,8 +1,24 @@
+// .navbar {
+//   margin-top: 0;
+//   padding-top: 0;
+//   background-color: white;
+//   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+// }
+
 .navbar {
-  margin-top: 0;
-  padding-top: 0;
-  background-color: white;
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between; /* Distribute items evenly */
+  align-items: center; /* Center items vertically */
+  padding: 0 3rem;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 1em;
+  line-height: 1;
 }
 
 .navbar-nav {
@@ -12,18 +28,4 @@
 
 .name_red {
   color: red;
-}
-
-.navbar-brand {
-  font-weight: bold;
-  margin-left: 1em;
-}
-
-.navbar-collapse {
-  margin-right: 1em;
-}
-
-.user_status {
-  display: flex;
-  align-items: center;
 }
