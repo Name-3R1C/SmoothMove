@@ -1,12 +1,28 @@
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  user: "postgres",
-  password: "2123",
-  host: "localhost",
-  port: "5432",
-  database: "smoothmove",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_NAME,
 });
+
+// const pool = new Pool({
+//   user: "vagrant",
+//   password: "123",
+//   host: "localhost",
+//   port: "5432",
+//   database: "smoothmove",
+// });
+console.log("process:", process.env);
+// const pool = new Pool({
+//   user: process.env.development.DB_USER,
+//   password: process.env.development.DB_PASS,
+//   host: process.env.development.DB_HOST,
+//   database: process.env.development.DB_NAME,
+// });
+
 const queryDatabase = (sql, params) => {
   return new Promise((resolve, reject) => {
     pool
@@ -115,7 +131,7 @@ const getAllProperties = (query, city, province, postcode, limit = 10) => {
   return queryDatabase(queryString, queryParams);
 };
 
-const addUser = async ({ firstName, lastName, email, hashedPassword}) => {
+const addUser = async ({ firstName, lastName, email, hashedPassword }) => {
   const sql = `
     INSERT INTO users (
       first_name,
@@ -124,12 +140,7 @@ const addUser = async ({ firstName, lastName, email, hashedPassword}) => {
       password
     ) VALUES ($1, $2, $3, $4) RETURNING *`;
 
-  const params = [
-    firstName,
-    lastName,
-    email,
-    hashedPassword
-  ];
+  const params = [firstName, lastName, email, hashedPassword];
 
   const result = await queryDatabase(sql, params);
 
@@ -187,6 +198,6 @@ module.exports = {
   getPropertyById,
   addProperty,
   deletePropertyById,
-  addUser, 
-  getUserByEmail
+  addUser,
+  getUserByEmail,
 };

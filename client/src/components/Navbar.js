@@ -1,13 +1,18 @@
 import React from "react";
 import "./Navbar.scss";
 
-export default function Navbar({ setPage, userName, logout }) {
-  console.log('Navbar---- usern name', userName);
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
+export default function Navbar({ setPage, userName, logout }) {
   return (
     <nav className="navbar navbar-expand navbar-light bg-light">
       <a className="navbar-brand" onClick={() => setPage("PropertyList")}>
-        <span className="name_red">SMOOTH</span>MOVE.INC
+        <span className="name_red">
+          <FontAwesomeIcon icon={faHouse} />
+          Smooth
+        </span>
+        MOVE
       </a>
       <button
         className="navbar-toggler"
@@ -28,7 +33,8 @@ export default function Navbar({ setPage, userName, logout }) {
           >
             Home
           </a>
-          <a className="nav-item nav-link" 
+          <a
+            className="nav-item nav-link"
             onClick={() => {
               if (userName) {
                 setPage("AddProperty");
@@ -36,20 +42,30 @@ export default function Navbar({ setPage, userName, logout }) {
                 window.alert("Please log in to add a property.");
                 setPage("LoginSignup");
               }
-            }}>
+            }}
+          >
             Add Property
           </a>
 
-          {userName ? 
-          <div className="user_status">
-            <a className="nav-item nav-link user_name">Welcome: {userName.firstName}</a>
-            <a className="nav-item nav-link logout" onClick={logout}>Logout</a>
-          </div>  
-            : <a className="nav-item nav-link" onClick={() => setPage("LoginSignup")}>
-            Login/Signup
-          </a>}
+          {userName ? (
+            <div className="user_status">
+              <a className="nav-item nav-link user_name">
+                Welcome: {userName.firstName}
+              </a>
+              <a className="nav-item nav-link logout" onClick={logout}>
+                Logout
+              </a>
+            </div>
+          ) : (
+            <a
+              className="nav-item nav-link"
+              onClick={() => setPage("LoginSignup")}
+            >
+              Login/Signup
+            </a>
+          )}
         </div>
       </div>
     </nav>
   );
-};
+}

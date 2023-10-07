@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PropertyDetail from "./PropertyDetail";
 
+
+
 export default function PropertyList(prop) {
   const [properties, setProperties] = useState([]);
   const [currentProperty, setCurrentProperty] = useState();
