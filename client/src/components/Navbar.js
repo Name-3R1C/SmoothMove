@@ -1,12 +1,13 @@
 import React from "react";
 import "./Navbar.scss";
-import AddProperty from "./AddProperty";
 
-export default function Navbar({ setPage }) {
+export default function Navbar({ setPage, userName, logout }) {
+  console.log('Navbar---- usern name', userName);
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand navbar-light bg-light">
       <a className="navbar-brand" onClick={() => setPage("PropertyList")}>
-        <span style={{ color: "red" }}>SMOOTH</span>MOVE.INC
+        <span className="name_red">SMOOTH</span>MOVE.INC
       </a>
       <button
         className="navbar-toggler"
@@ -19,22 +20,36 @@ export default function Navbar({ setPage }) {
       >
         <span className="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav">
           <a
-            class="nav-item nav-link active"
+            className="nav-item nav-link active"
             onClick={() => setPage("PropertyList")}
           >
             Home
           </a>
-          <a class="nav-item nav-link" onClick={() => setPage("AddProperty")}>
+          <a className="nav-item nav-link" 
+            onClick={() => {
+              if (userName) {
+                setPage("AddProperty");
+              } else {
+                window.alert("Please log in to add a property.");
+                setPage("LoginSignup");
+              }
+            }}>
             Add Property
           </a>
-          <a class="nav-item nav-link" onClick={() => setPage("LoginSignup")}>
+
+          {userName ? 
+          <div className="user_status">
+            <a className="nav-item nav-link user_name">Welcome: {userName.firstName}</a>
+            <a className="nav-item nav-link logout" onClick={logout}>Logout</a>
+          </div>  
+            : <a className="nav-item nav-link" onClick={() => setPage("LoginSignup")}>
             Login/Signup
-          </a>
+          </a>}
         </div>
       </div>
     </nav>
   );
-}
+};

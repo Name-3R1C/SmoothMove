@@ -1,8 +1,8 @@
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  user: "vagrant",
-  password: "123",
+  user: "postgres",
+  password: "2123",
   host: "localhost",
   port: "5432",
   database: "smoothmove",
@@ -115,6 +115,38 @@ const getAllProperties = (query, city, province, postcode, limit = 10) => {
   return queryDatabase(queryString, queryParams);
 };
 
+const addUser = async ({ firstName, lastName, email, hashedPassword}) => {
+  const sql = `
+    INSERT INTO users (
+      first_name,
+      last_name,
+      email,
+      password
+    ) VALUES ($1, $2, $3, $4) RETURNING *`;
+
+  const params = [
+    firstName,
+    lastName,
+    email,
+    hashedPassword
+  ];
+
+  const result = await queryDatabase(sql, params);
+
+  return result[0];
+};
+
+const getUserByEmail = async (email) => {
+  const sql = `
+    SELECT *
+    FROM users
+    WHERE LOWER(email) = LOWER($1)
+  `;
+
+  const result = await queryDatabase(sql, [email]);
+  return result[0];
+};
+
 const deletePropertyById = async (propertyId) => {
   try {
     // First, delete associated images, if any
@@ -155,4 +187,6 @@ module.exports = {
   getPropertyById,
   addProperty,
   deletePropertyById,
+  addUser, 
+  getUserByEmail
 };

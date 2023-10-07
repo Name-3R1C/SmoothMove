@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-export default function AddProperty(prop) {
+export default function AddProperty() {
   const [property, setProperty] = useState({
     owner_id: 1,
     title: "",

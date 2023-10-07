@@ -1,3 +1,7 @@
+.signuplogin {
+  margin-top: 1em;
+}
+
 .column {
   float: left;
   width: 50%;
@@ -7,4 +11,12 @@
 
 .login {
   border-right: solid;
+}
+
+.response-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  margin: 1em;
 }

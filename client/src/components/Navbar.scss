@@ -2,3 +2,21 @@
   margin-left: auto;
   margin-right: 0;
 }
+
+.name_red {
+  color: red;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  margin-left: 1em;  
+}
+
+.navbar-collapse {
+  margin-right: 1em;
+}
+
+.user_status {
+  display: flex;
+  align-items: center;
+}

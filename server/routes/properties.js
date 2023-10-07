@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const db = require("../db");
-const database = require("../db");
 
 // Default route to display all properties
 router.get("/properties", async (req, res) => {
@@ -50,7 +49,7 @@ router.post("/properties", async (req, res) => {
 router.get("/properties/search", async (req, res) => {
   try {
     const { query, city, province, postcode } = req.query;
-    const properties = await database.getAllProperties(
+    const properties = await db.getAllProperties(
       query,
       city,
       province,

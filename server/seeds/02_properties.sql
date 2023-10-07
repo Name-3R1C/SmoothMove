@@ -48,9 +48,9 @@ VALUES
 
 INSERT INTO images (property_id, photo_url)
 VALUES
-  (45, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m2626392529od-w1024_h768_x2.jpg'),
-  (45, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3838170680od-w1024_h768_x2.jpg'),
-  (45, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
+  (2, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m2626392529od-w1024_h768_x2.jpg'),
+  (2, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3838170680od-w1024_h768_x2.jpg'),
+  (2, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
 
 
 
