@@ -28,7 +28,6 @@ function App() {
   return (
     <main className="layout">
       <Navbar setPage={setPage} userName={cookies.user} logout={handleLogout} />
-      {console.log('cookies: ', cookies.user)}
       {page === pages.AddProperty && <AddProperty />}
       {page === pages.LoginSignup && <LoginSignup onLogin={handleLogin} />}
       {page === pages.PropertyList && <PropertySearch />}

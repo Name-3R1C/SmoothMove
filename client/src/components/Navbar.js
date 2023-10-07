@@ -1,8 +1,8 @@
 import React from "react";
 import "./Navbar.scss";
-import AddProperty from "./AddProperty";
 
 export default function Navbar({ setPage, userName, logout }) {
+  console.log('Navbar---- usern name', userName);
 
   return (
     <nav className="navbar navbar-expand navbar-light bg-light">
@@ -28,7 +28,15 @@ export default function Navbar({ setPage, userName, logout }) {
           >
             Home
           </a>
-          <a className="nav-item nav-link" onClick={() => setPage("AddProperty")}>
+          <a className="nav-item nav-link" 
+            onClick={() => {
+              if (userName) {
+                setPage("AddProperty");
+              } else {
+                window.alert("Please log in to add a property.");
+                setPage("LoginSignup");
+              }
+            }}>
             Add Property
           </a>
 
@@ -44,4 +52,4 @@ export default function Navbar({ setPage, userName, logout }) {
       </div>
     </nav>
   );
-}
+};

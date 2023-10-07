@@ -22,9 +22,6 @@ export default function LoginSignup({ onLogin }) {
         if (isNaN(res.data.userID)){
           setResponseMessage(res.data);
         } else {
-          console.log('set cookie with ', res.data);
-          // console.log('Cookie with id ', res.data.userID);
-          // console.log('Cookie with name ', res.data.firstName);
           onLogin(res.data);
         }
       })
@@ -42,7 +39,6 @@ export default function LoginSignup({ onLogin }) {
         if (isNaN(res.data.userID)){
           setResponseMessage(res.data);
         } else {
-          console.log('set cookie with ', res.data);
           setResponseMessage('');
           onLogin(res.data);
         }
