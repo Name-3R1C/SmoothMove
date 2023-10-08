@@ -8,7 +8,7 @@ import PropertySearch from "./components/PropertySearch";
 
 // // Importing finished components here!
 // import Header from "./components/Header"; // Adjust the import path as needed
-// import Footer from "./components/Footer"; // Adjust the import path as needed
+import Footer from "./components/Footer";
 
 const pages = {
   PropertyList: "PropertyList",
@@ -38,7 +38,7 @@ function App() {
         {page === pages.LoginSignup && <LoginSignup onLogin={handleLogin} />}
         {page === pages.PropertyList && <PropertySearch />}
       </main>
-      {/* <Footer /> JayS is currently working on the footer component, to be stored here */}
+      <Footer />
     </div>
   );
 }
