@@ -6,8 +6,8 @@ import Navbar from "./components/Navbar";
 import LoginSignup from "./components/LoginSignup";
 import PropertySearch from "./components/PropertySearch";
 
-// // Importing finished components here!
-// import Header from "./components/Header"; // Adjust the import path as needed
+
+// import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 const pages = {
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div className="app">
-      {/* <Header /> JayS is currently working on the header component, to be stored here */}
+      {/* <Header />  */}
       <main className="layout">
         <Navbar setPage={setPage} userName={cookies.user} logout={handleLogout} />
         {page === pages.AddProperty && <AddProperty />}
