@@ -31,14 +31,14 @@ function App() {
 
   return (
     <div className="app">
-      <Header /> {/* JayS is currently working on the header component, to be stored here */}
+      {/* <Header /> JayS is currently working on the header component, to be stored here */}
       <main className="layout">
         <Navbar setPage={setPage} userName={cookies.user} logout={handleLogout} />
         {page === pages.AddProperty && <AddProperty />}
         {page === pages.LoginSignup && <LoginSignup onLogin={handleLogin} />}
         {page === pages.PropertyList && <PropertySearch />}
       </main>
-      <Footer /> {/* JayS is currently working on the footer component, to be stored here */}
+      {/* <Footer /> JayS is currently working on the footer component, to be stored here */}
     </div>
   );
 }
