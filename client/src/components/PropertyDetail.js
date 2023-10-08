@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./PropertyDetail.scss";
 
 export default function PropertyDetail({
   currentPropertyID,
@@ -29,10 +30,6 @@ export default function PropertyDetail({
     const newIndex = (nextIndex + images.length) % images.length;
     setCurrentImageIndex(newIndex);
   };
-
-  const imageWidth = "400px"; // Adjust the desired width
-  const imageHeight = "500px"; // Adjust the desired height
-
   // Configure the interval (in milliseconds) for the carousel transition
   const carouselInterval = 3000; // Adjust the desired interval (e.g., 3000 ms = 3 seconds)
   const handleDeleteProperty = async () => {
@@ -49,11 +46,11 @@ export default function PropertyDetail({
     }
   };
   return (
-    <div className="container mt-5">
+    <div className="container custom-container">
       {property ? (
-        <div className="card">
-          <div className="card-header d-flex justify-content-between align-items-center">
-            <h5 className="card-title">${property.cost_per_month}</h5>
+        <div className="card custom-card">
+          <div className="card-header d-flex justify-content-between align-items-center custom-card-header">
+            <h5 className="card-title">{property.title}</h5>
             <span
               className="close-icon"
               onClick={() => setCurrentProperty(null)}
@@ -61,7 +58,44 @@ export default function PropertyDetail({
               ❌
             </span>
           </div>
-          <div
+
+          <div className="property-image-gallery row">
+            <div className="col-md-6 custom-padding">
+              <div className="card">
+                <img
+                  src={images[0]} // Assuming the first image is at index 0
+                  alt={`Property 1`}
+                  className="full-width"
+                />
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="row">
+                {images.slice(1, 5).map((image, index) => (
+                  <div
+                    className={`col-6${index === 3 ? "" : " mb-3"}`}
+                    key={index}
+                  >
+                    <div className="card">
+                      <img
+                        src={image}
+                        alt={`Property ${index + 2}`}
+                        className="full-width fixed-height"
+                      />
+                      {index === 3 && images.length > 5 && (
+                        <div className="overlay">
+                          <p>+{images.length - 4}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* <div
+          col-md-${index === 0 ? "6" : "3"}
             id="propertyCarousel"
             className="carousel slide"
             data-ride="carousel"
@@ -89,7 +123,7 @@ export default function PropertyDetail({
                     src={image}
                     className="d-block w-100"
                     alt={`Property ${index + 1}`}
-                    style={{ width: imageWidth, height: imageHeight }}
+                    //style={{ width: imageWidth, height: imageHeight }}
                   />
                 </div>
               ))}
@@ -120,7 +154,7 @@ export default function PropertyDetail({
               ></span>
               <span className="sr-only">Next</span>
             </a>
-          </div>
+          </div> */}
           <div className="card-body">
             <h5 className="card-title">{property.title}</h5>
             <p className="card-text">{property.description}</p>

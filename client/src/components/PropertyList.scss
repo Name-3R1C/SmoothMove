@@ -21,6 +21,38 @@
 }
 
 .card-text-no-margin-bottom {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   font-size: 15px;
+}
+
+/* Styling for search wrapper */
+.search-wrapper {
+  border: 1px solid #ccc; /* Add border */
+  padding: 15px; /* Add padding */
+  margin-bottom: 15px; /* Add margin bottom for spacing */
+}
+
+/* Styling for detail wrapper */
+.detail-wrapper {
+  border: none; /* Add border */
+  padding: 0; /* Add padding */
+}
+
+/* Add a hover effect to the property cards */
+.card:hover {
+  transform: translateY(-5px); /* Move the card up slightly on hover */
+  //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow */
+  transition: transform 0.3s, box-shadow 0.3s; /* Add a smooth transition */
+}
+
+/* Restyle the card title on hover */
+.card:hover .card-title-small {
+  font-size: 18px; /* Increase font size on hover */
+  color: #007bff; /* Change text color on hover */
+}
+
+/* Restyle the card text on hover */
+.card:hover .card-text-no-margin-bottom {
+  font-size: 16px; /* Increase font size on hover */
+  color: #333; /* Change text color on hover */
 }
