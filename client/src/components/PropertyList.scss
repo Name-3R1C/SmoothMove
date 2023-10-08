@@ -1,0 +1,26 @@
+.card {
+  border: none;
+  border-radius: 8px 8px;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.card-img-top {
+  height: 305px; /* Set the height of the image */
+  width: 322px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card-body-custom {
+  padding: 1rem 0; /* Remove padding around the card-body */
+}
+
+.card-title-small {
+  font-size: 16px; /* Adjust the font size to make it smaller */
+}
+
+.card-text-no-margin-bottom {
+  margin-bottom: .5rem;
+  font-size: 15px;
+}
