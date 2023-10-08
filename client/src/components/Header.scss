@@ -1,0 +1,50 @@
+/* Header.scss */
+
+.header {
+    background-color: #f0f8ff; /* Background color for the header */
+    padding: 20px; /* Adjust padding as needed */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+      font-size: 24px; /* Adjust font size for the logo */
+      font-weight: bold; /* Adjust font weight as needed */
+      text-decoration: none;
+      color: #333; /* Adjust logo color */
+      transition: color 0.2s ease-in-out;
+  
+      &:hover {
+        color: #007bff; /* Change logo color on hover */
+      }
+    }
+
+    .search-form {
+    display: flex;
+    align-items: center;
+  
+    input[type="text"] {
+        padding: 10px; /* Adjust padding as needed */
+        border: 1px solid #ccc; /* Adjust border style */
+        border-radius: 4px;
+        margin-right: 10px; /* Adjust spacing */
+    }
+
+    button[type="submit"] {
+        background-color: #007bff; /* Adjust button background color */
+        color: #fff; /* Adjust button text color */
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px; /* Adjust padding as needed */
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+          background-color: #0056b3; /* Change button background color on hover */
+        }
+    }
+    }
+}
