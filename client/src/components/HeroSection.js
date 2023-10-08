@@ -17,10 +17,7 @@ function HeroSection({ onSearch }) {
   };
 
   return (
-    <div
-      className="hero-section"
-      style={{ backgroundColor: "#f0f8ff", marginTop: "20px" }}
-    >
+    <div className="hero-section ">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-4">

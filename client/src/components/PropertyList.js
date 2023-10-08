@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PropertyDetail from "./PropertyDetail";
+import "./PropertyList.scss";
 
 export default function PropertyList(prop) {
   const [properties, setProperties] = useState([]);
@@ -27,6 +28,11 @@ export default function PropertyList(prop) {
     );
     setProperties(updatedProperties);
   };
+  // Function to format date in "MMM, yyyy" format
+  const formatDate = (dateString) => {
+    const options = { month: "short", year: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
   return (
     <div className="container">
       {currentProperty ? (
@@ -36,10 +42,10 @@ export default function PropertyList(prop) {
           onPropertyDeleted={handlePropertyDeleted}
         />
       ) : (
-        <div className="row row-cols-1 row-cols-md-3">
+        <div className="row row-cols-1 row-cols-md-4">
           {properties && properties.length > 0 ? (
             properties.map((property) => (
-              <div key={property.id} className="col-md-4 mb-3">
+              <div key={property.id} className="col-md-3 mb-3">
                 <div
                   className="card"
                   onClick={() => setCurrentProperty(property.id)}
@@ -48,31 +54,20 @@ export default function PropertyList(prop) {
                     src={property.thumbnail_photo_url}
                     className="card-img-top img-fluid"
                     alt={property.title}
-                    style={{ maxHeight: "200px" }}
                   />
-                  <div className="card-body">
-                    <h5 className="card-title">{property.title}</h5>
-                    <p className="card-text">
-                      <strong>Cost per Month:</strong> $
-                      {property.cost_per_month}
+                  <div className="card-body card-body-custom">
+                    <h5 className="card-title card-title-small font-weight-bold">
+                      {property.city}, {property.country}{" "}
+                    </h5>
+                    <p className="card-text-no-padding card-text-no-margin-bottom font-weight-bold">
+                      {property.number_of_bedrooms} bed,
+                      {property.number_of_bathrooms} Bath
                     </p>
-                    <p className="card-text">
-                      <strong>Bedrooms:</strong> {property.number_of_bedrooms}
+                    <p className="card-text-no-padding card-text-no-margin-bottom font-weight-bold">
+                      {formatDate(property.available_from)}
                     </p>
-                    <p className="card-text">
-                      <strong>Bathrooms:</strong> {property.number_of_bathrooms}
-                    </p>
-                    <p className="card-text">
-                      <strong>Street:</strong> {property.street}
-                    </p>
-                    <p className="card-text">
-                      <strong>City:</strong> {property.city}
-                    </p>
-                    <p className="card-text">
-                      <strong>Province:</strong> {property.province}
-                    </p>
-                    <p className="card-text">
-                      <strong>Postal Code:</strong> {property.post_code}
+                    <p className="card-text-no-padding card-text-no-margin-bottom font-weight-bold">
+                      <strong>${property.cost_per_month}/month</strong>
                     </p>
                   </div>
                 </div>

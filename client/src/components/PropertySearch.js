@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HeroSection from "./HeroSection";
 import axios from "axios";
 import PropertyDetail from "./PropertyDetail";
+import "./PropertySearch.scss";
 import PropertyList from "./PropertyList"; // Import PropertyList component
 
 function PropertySearch() {

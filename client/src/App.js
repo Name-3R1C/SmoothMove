@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.scss";
-import { useCookies } from 'react-cookie';
+import { useCookies } from "react-cookie";
 import AddProperty from "./components/AddProperty";
 import Navbar from "./components/Navbar";
 import LoginSignup from "./components/LoginSignup";
@@ -18,15 +18,15 @@ const pages = {
 
 function App() {
   const [page, setPage] = useState(pages.PropertyList);
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   function handleLogin(user) {
     setCookie("user", user);
-  };
+  }
 
   function handleLogout(user) {
-    removeCookie('user');
-  };
+    removeCookie("user");
+  }
 
   return (
     <div className="app">
