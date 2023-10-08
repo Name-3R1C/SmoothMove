@@ -7,7 +7,6 @@ import LoginSignup from "./components/LoginSignup";
 import PropertySearch from "./components/PropertySearch";
 
 
-// import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 const pages = {
@@ -31,7 +30,6 @@ function App() {
 
   return (
     <div className="app">
-      {/* <Header />  */}
       <main className="layout">
         <Navbar setPage={setPage} userName={cookies.user} logout={handleLogout} />
         {page === pages.AddProperty && <AddProperty />}
