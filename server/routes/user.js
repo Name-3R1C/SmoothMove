@@ -47,7 +47,7 @@ router.post("/signin", async (req, res) => {
     console.log('user info ', user);
 
     if (!user) {
-      return res.send("E-mail does not exits");
+      return res.send("E-mail does not exist");
     }
 
     if (!bcrypt.compareSync(password, user.password)) {

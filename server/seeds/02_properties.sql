@@ -89,16 +89,33 @@ VALUES
 
 INSERT INTO images (property_id, photo_url)
 VALUES
-  (7, 'https://images.pexels.com/photos/2058692/pexels-photo-2058692.jpeg');
+  (3, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m2626392529od-w1024_h768_x2.jpg'),
+  (3, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3838170680od-w1024_h768_x2.jpg'),
+  (3, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
+
+  INSERT INTO images (property_id, photo_url)
+VALUES
+  (4, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m2626392529od-w1024_h768_x2.jpg'),
+  (4, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3838170680od-w1024_h768_x2.jpg'),
+  (4, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
+
+  INSERT INTO images (property_id, photo_url)
+VALUES
+  (5, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m2626392529od-w1024_h768_x2.jpg'),
+  (5, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3838170680od-w1024_h768_x2.jpg'),
+  (5, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
+
+
+
+
 INSERT INTO images (property_id, photo_url)
 VALUES
-  (8, 'https://images.pexels.com/photos/2086639/pexels-photo-2086639.jpeg');
-INSERT INTO images (property_id, photo_url)
+  (6, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m2626392529od-w1024_h768_x2.jpg'),
+  (6, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3838170680od-w1024_h768_x2.jpg'),
+  (6, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
+
+  INSERT INTO images (property_id, photo_url)
 VALUES
-  (9, 'https://images.pexels.com/photos/2079231/pexels-photo-2079231.jpeg');
-INSERT INTO images (property_id, photo_url)
-VALUES
-  (10, 'https://images.pexels.com/photos/2078875/pexels-photo-2078875.jpeg');
-INSERT INTO images (property_id, photo_url)
-VALUES
-  (11, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3389156154od-w1024_h768_x2.jpg');
+  (7, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m2626392529od-w1024_h768_x2.jpg'),
+  (7, 'https://ap.rdcpix.com/26999d161765fa2c5b56791f4ef93361l-m3838170680od-w1024_h768_x2.jpg'),
+  (7, 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80');
