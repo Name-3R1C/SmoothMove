@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Navbar.scss";
-import PropertySearch from "./PropertySearch";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faBars, faUser } from "@fortawesome/free-solid-svg-icons";
@@ -40,7 +39,7 @@ export default function Navbar({ setPage, userName, logout }) {
           <FontAwesomeIcon icon={faHouse} />
           Smooth
         </span>
-        MOVE.INC
+        MOVE
       </div>
 
       <div class="dropdown">
