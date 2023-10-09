@@ -43,9 +43,9 @@ export default function Navbar({ setPage, userName, logout }) {
         MOVE.INC
       </div>
 
-      <div class="dropdown">
+      <div className="dropdown">
         <button
-          // class="btn btn-secondary dropdown-toggle"
+          // className="btn btn-secondary dropdown-toggle"
           type="button"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -67,21 +67,21 @@ export default function Navbar({ setPage, userName, logout }) {
           </div>
         </button>
         <ul
-          class="dropdown-menu dropdown-menu-end"
+          className="dropdown-menu dropdown-menu-end"
           style={{ margin: "10px 0" }}
         >
           <li>
-            <a class="dropdown-item" onClick={() => setPage("LoginSignup")}>
+            <a className="dropdown-item" onClick={() => setPage("LoginSignup")}>
               Login
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">
+            <a className="dropdown-item" href="#">
               Another action
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">
+            <a className="dropdown-item" href="#">
               Something else here
             </a>
           </li>
