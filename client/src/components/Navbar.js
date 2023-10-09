@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import "./Navbar.scss";
-import PropertySearch from "./PropertySearch";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 
-export default function Navbar({ setPage, userName, logout }) {
+export default function Navbar({
+  setPage,
+  userName,
+  logout,
+  onAddPropertyClick,
+  onSignupClick,
+  welcomeVisible,
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -40,7 +45,16 @@ export default function Navbar({ setPage, userName, logout }) {
           <FontAwesomeIcon icon={faHouse} />
           Smooth
         </span>
-        MOVE.INC
+        MOVE
+      </div>
+      {welcomeVisible && (
+        <div className="welcome-message">Welcome to SmoothMove</div>
+      )}
+      <div>
+        {/* Display the user's name here */}
+        {userName && (
+          <span className="user-name">Welcome, {userName.firstName}</span>
+        )}
       </div>
 
       <div className="dropdown">
@@ -70,21 +84,44 @@ export default function Navbar({ setPage, userName, logout }) {
           className="dropdown-menu dropdown-menu-end"
           style={{ margin: "10px 0" }}
         >
-          <li>
-            <a className="dropdown-item" onClick={() => setPage("LoginSignup")}>
-              Login
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Another action
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Something else here
-            </a>
-          </li>
+          {userName ? (
+            <>
+              <li>
+                <span className="dropdown-item">{`Welcome, ${userName.firstName}`}</span>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="dropdown-item"
+                  onClick={onAddPropertyClick}
+                >
+                  Add Property
+                </button>
+              </li>
+              <li>
+                <a class="dropdown-item" onClick={logout}>
+                  Logout
+                </a>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <a class="dropdown-item" onClick={() => setPage("Login")}>
+                  Login
+                </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="dropdown-item"
+                  onClick={onSignupClick}
+                >
+                  Sign Up
+                </button>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </nav>

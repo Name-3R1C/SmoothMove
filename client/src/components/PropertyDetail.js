@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./PropertyDetail.scss";
 
 export default function PropertyDetail({
   currentPropertyID,
@@ -9,6 +10,7 @@ export default function PropertyDetail({
   const [property, setProperty] = useState(null);
   const [images, setImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [enlargedImage, setEnlargedImage] = useState(null); // To store the URL of the enlarged image
 
   useEffect(() => {
     // Define the URL to fetch property details by ID
@@ -25,14 +27,10 @@ export default function PropertyDetail({
       });
   }, [currentPropertyID]);
 
-  const handlePictureChange = (nextIndex) => {
-    const newIndex = (nextIndex + images.length) % images.length;
-    setCurrentImageIndex(newIndex);
-  };
-
-  const imageWidth = "400px"; // Adjust the desired width
-  const imageHeight = "500px"; // Adjust the desired height
-
+  // const handlePictureChange = (nextIndex) => {
+  //   const newIndex = (nextIndex + images.length) % images.length;
+  //   setCurrentImageIndex(newIndex);
+  // };
   // Configure the interval (in milliseconds) for the carousel transition
   const carouselInterval = 3000; // Adjust the desired interval (e.g., 3000 ms = 3 seconds)
   const handleDeleteProperty = async () => {
@@ -48,12 +46,32 @@ export default function PropertyDetail({
       alert("Error deleting property. Please try again later.");
     }
   };
+
+  const handlePictureChange = (nextIndex) => {
+    const newIndex = (nextIndex + images.length) % images.length;
+    setCurrentImageIndex(newIndex);
+  };
+
+  const handleEnlargeImage = (image) => {
+    setEnlargedImage(image);
+  };
+
+  const handleCloseEnlargedImage = () => {
+    setEnlargedImage(null);
+  };
+
+  const isImageEnlarged = enlargedImage !== null;
+
   return (
-    <div className="container mt-5">
+    <div
+      className={`container custom-container ${
+        isImageEnlarged ? "overlay-visible" : ""
+      }`}
+    >
       {property ? (
-        <div className="card">
-          <div className="card-header d-flex justify-content-between align-items-center">
-            <h5 className="card-title">${property.cost_per_month}</h5>
+        <div className="card custom-card">
+          <div className="card-header d-flex justify-content-between align-items-center custom-card-header">
+            <h5 className="card-title">{property.title}</h5>
             <span
               className="close-icon"
               onClick={() => setCurrentProperty(null)}
@@ -61,7 +79,69 @@ export default function PropertyDetail({
               ❌
             </span>
           </div>
-          <div
+
+          <div className="property-image-gallery row">
+            <div
+              className={`col-md-${
+                isImageEnlarged ? "12" : "6"
+              } custom-padding`}
+            >
+              <div className="card">
+                <img
+                  src={images[0]} // Assuming the first image is at index 0
+                  alt={`Property 1`}
+                  className={`full-width ${isImageEnlarged ? "enlarged" : ""}`}
+                  onClick={() => handleEnlargeImage(images[0])}
+                />
+              </div>
+            </div>
+            <div className="col-md-6">
+              <div className="row">
+                {images.slice(1, 5).map((image, index) => (
+                  <div
+                    className={`col-6${index === 3 ? "" : " mb-3"}`}
+                    key={index}
+                  >
+                    <div className="card">
+                      <img
+                        src={image}
+                        alt={`Property ${index + 2}`}
+                        className={`full-width ${
+                          isImageEnlarged ? "enlarged" : ""
+                        }`}
+                        onClick={() => handleEnlargeImage(images[0])}
+                      />
+                      {index === 3 && images.length > 5 && (
+                        <div className="overlay">
+                          <p>+{images.length - 4}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {isImageEnlarged && (
+              <div className="enlarged-image-container">
+                <div className="enlarged-image">
+                  <span
+                    className="close-icon"
+                    onClick={handleCloseEnlargedImage}
+                  >
+                    &times;
+                  </span>
+                  <img
+                    src={enlargedImage}
+                    alt="Enlarged Property Image"
+                    className="img-fluid fit-in-gallery"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* <div
+          col-md-${index === 0 ? "6" : "3"}
             id="propertyCarousel"
             className="carousel slide"
             data-ride="carousel"
@@ -89,7 +169,7 @@ export default function PropertyDetail({
                     src={image}
                     className="d-block w-100"
                     alt={`Property ${index + 1}`}
-                    style={{ width: imageWidth, height: imageHeight }}
+                    //style={{ width: imageWidth, height: imageHeight }}
                   />
                 </div>
               ))}
@@ -120,7 +200,7 @@ export default function PropertyDetail({
               ></span>
               <span className="sr-only">Next</span>
             </a>
-          </div>
+          </div> */}
           <div className="card-body">
             <h5 className="card-title">{property.title}</h5>
             <p className="card-text">{property.description}</p>

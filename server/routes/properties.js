@@ -16,7 +16,7 @@ router.get("/properties", async (req, res) => {
 
 router.get("/property/:id", async (req, res) => {
   try {
-    console.log(req.params.id);
+    //console.log(req.params.id);
     const propertyId = req.params.id;
     const property = await db.getPropertyById(propertyId);
 

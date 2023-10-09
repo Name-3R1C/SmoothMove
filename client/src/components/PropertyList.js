@@ -36,11 +36,13 @@ export default function PropertyList(prop) {
   return (
     <div className="container">
       {currentProperty ? (
-        <PropertyDetail
-          currentPropertyID={currentProperty}
-          setCurrentProperty={setCurrentProperty}
-          onPropertyDeleted={handlePropertyDeleted}
-        />
+        <div className="detail-wrapper">
+          <PropertyDetail
+            currentPropertyID={currentProperty}
+            setCurrentProperty={setCurrentProperty}
+            onPropertyDeleted={handlePropertyDeleted}
+          />
+        </div>
       ) : (
         <div className="row row-cols-1 row-cols-md-4">
           {properties && properties.length > 0 ? (
@@ -64,7 +66,7 @@ export default function PropertyList(prop) {
                       {property.number_of_bathrooms} Bath
                     </p>
                     <p className="card-text-no-padding card-text-no-margin-bottom font-weight-bold">
-                      {formatDate(property.available_from)}
+                      From {formatDate(property.available_from)}
                     </p>
                     <p className="card-text-no-padding card-text-no-margin-bottom font-weight-bold">
                       <strong>${property.cost_per_month}/month</strong>

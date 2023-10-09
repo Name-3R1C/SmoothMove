@@ -1,0 +1,129 @@
+.custom-card-header {
+  background-color: white; /* Set the background color to white */
+  border: none;
+}
+
+.custom-container {
+  padding: 0; /* Remove padding */
+  border: none; /* Remove border */
+}
+.custom-card {
+  background-color: white;
+  border: none; /* Set the background color to white */
+}
+
+/* PropertyDetail.scss */
+
+/* Custom class for the first image to take up the full width */
+.full-width {
+  width: 100%;
+  height: auto;
+}
+
+/* Custom class for the other images to take up a smaller portion of the width */
+.fixed-height {
+  height: 200px; /* Adjust the height as per your preference */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ); /* Adjust the background color and opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff; /* Text color */
+  font-size: 24px; /* Text font size */
+}
+
+.custom-padding {
+  padding-right: 0;
+}
+
+.custom-padding-inner {
+  padding: 10px;
+}
+
+/* CSS for enlarging the image */
+.enlarged-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  overflow-y: auto;
+}
+
+.enlarged-image {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.enlarged-image img {
+  max-width: 100%;
+  max-height: 80vh;
+}
+
+/* Add overlay class to the container when an image is enlarged */
+.overlay-visible .container {
+  overflow: hidden;
+}
+
+/* Add styles for the enlarged image */
+.overlay-visible .property-image-gallery .col-md-6 {
+  width: 50%;
+}
+
+.overlay-visible .property-image-gallery .col-6 {
+  margin-bottom: 0.5rem;
+}
+
+.overlay-visible .property-image-gallery .col-6:last-child {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.enlarged-image-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure it's above other elements */
+}
+
+.enlarged-image {
+  position: relative;
+}
+
+.enlarged-image img.fit-in-gallery {
+  max-width: 100%;
+  max-height: 100%;
+}
