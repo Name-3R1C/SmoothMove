@@ -10,6 +10,7 @@ export default function PropertyDetail({
   const [property, setProperty] = useState(null);
   const [images, setImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [enlargedImage, setEnlargedImage] = useState(null); // To store the URL of the enlarged image
 
   useEffect(() => {
     // Define the URL to fetch property details by ID
@@ -26,10 +27,10 @@ export default function PropertyDetail({
       });
   }, [currentPropertyID]);
 
-  const handlePictureChange = (nextIndex) => {
-    const newIndex = (nextIndex + images.length) % images.length;
-    setCurrentImageIndex(newIndex);
-  };
+  // const handlePictureChange = (nextIndex) => {
+  //   const newIndex = (nextIndex + images.length) % images.length;
+  //   setCurrentImageIndex(newIndex);
+  // };
   // Configure the interval (in milliseconds) for the carousel transition
   const carouselInterval = 3000; // Adjust the desired interval (e.g., 3000 ms = 3 seconds)
   const handleDeleteProperty = async () => {
@@ -45,8 +46,28 @@ export default function PropertyDetail({
       alert("Error deleting property. Please try again later.");
     }
   };
+
+  const handlePictureChange = (nextIndex) => {
+    const newIndex = (nextIndex + images.length) % images.length;
+    setCurrentImageIndex(newIndex);
+  };
+
+  const handleEnlargeImage = (image) => {
+    setEnlargedImage(image);
+  };
+
+  const handleCloseEnlargedImage = () => {
+    setEnlargedImage(null);
+  };
+
+  const isImageEnlarged = enlargedImage !== null;
+
   return (
-    <div className="container custom-container">
+    <div
+      className={`container custom-container ${
+        isImageEnlarged ? "overlay-visible" : ""
+      }`}
+    >
       {property ? (
         <div className="card custom-card">
           <div className="card-header d-flex justify-content-between align-items-center custom-card-header">
@@ -60,12 +81,17 @@ export default function PropertyDetail({
           </div>
 
           <div className="property-image-gallery row">
-            <div className="col-md-6 custom-padding">
+            <div
+              className={`col-md-${
+                isImageEnlarged ? "12" : "6"
+              } custom-padding`}
+            >
               <div className="card">
                 <img
                   src={images[0]} // Assuming the first image is at index 0
                   alt={`Property 1`}
-                  className="full-width"
+                  className={`full-width ${isImageEnlarged ? "enlarged" : ""}`}
+                  onClick={() => handleEnlargeImage(images[0])}
                 />
               </div>
             </div>
@@ -92,6 +118,23 @@ export default function PropertyDetail({
                 ))}
               </div>
             </div>
+            {isImageEnlarged && (
+              <div className="enlarged-image-container">
+                <div className="enlarged-image">
+                  <span
+                    className="close-icon"
+                    onClick={handleCloseEnlargedImage}
+                  >
+                    &times;
+                  </span>
+                  <img
+                    src={enlargedImage}
+                    alt="Enlarged Property Image"
+                    className="img-fluid"
+                  />
+                </div>
+              </div>
+            )}
           </div>
 
           {/* <div

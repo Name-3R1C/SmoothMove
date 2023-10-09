@@ -8,21 +8,6 @@ const pool = new Pool({
   database: process.env.DB_NAME,
 });
 
-// const pool = new Pool({
-//   user: "vagrant",
-//   password: "123",
-//   host: "localhost",
-//   port: "5432",
-//   database: "smoothmove",
-// });
-console.log("process:", process.env);
-// const pool = new Pool({
-//   user: process.env.development.DB_USER,
-//   password: process.env.development.DB_PASS,
-//   host: process.env.development.DB_HOST,
-//   database: process.env.development.DB_NAME,
-// });
-
 const queryDatabase = (sql, params) => {
   return new Promise((resolve, reject) => {
     pool
@@ -180,11 +165,11 @@ const deletePropertyById = async (propertyId) => {
       deletePropertyQuery,
       deletePropertyParams
     );
-    console.log("result.length", result.length);
+    //console.log("result.length", result.length);
     if (result.length === 0) {
       return null; // Property with the given ID was not found
     }
-    console.log("result[0]", result[0]);
+    //console.log("result[0]", result[0]);
     return result[0];
   } catch (error) {
     console.error("Error deleting property:", error);

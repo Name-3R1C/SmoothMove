@@ -69,11 +69,24 @@ export default function Navbar({ setPage, userName, logout }) {
           class="dropdown-menu dropdown-menu-end"
           style={{ margin: "10px 0" }}
         >
-          <li>
-            <a class="dropdown-item" onClick={() => setPage("LoginSignup")}>
-              Login
-            </a>
-          </li>
+          {userName ? (
+            <>
+              <li>
+                <span className="dropdown-item">{`Welcome, ${userName.firstName}`}</span>
+              </li>
+              <li>
+                <a class="dropdown-item" onClick={logout}>
+                  Logout
+                </a>
+              </li>
+            </>
+          ) : (
+            <li>
+              <a class="dropdown-item" onClick={() => setPage("Login")}>
+                Login
+              </a>
+            </li>
+          )}
           <li>
             <a class="dropdown-item" href="#">
               Another action
