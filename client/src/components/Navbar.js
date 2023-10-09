@@ -9,6 +9,7 @@ export default function Navbar({
   userName,
   logout,
   onAddPropertyClick,
+  onSignupClick,
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
@@ -94,22 +95,23 @@ export default function Navbar({
               </li>
             </>
           ) : (
-            <li>
-              <a class="dropdown-item" onClick={() => setPage("Login")}>
-                Login
-              </a>
-            </li>
+            <>
+              <li>
+                <a class="dropdown-item" onClick={() => setPage("Login")}>
+                  Login
+                </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="dropdown-item"
+                  onClick={onSignupClick}
+                >
+                  Sign Up
+                </button>
+              </li>
+            </>
           )}
-          <li>
-            <a class="dropdown-item" href="#">
-              Another action
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="#">
-              Something else here
-            </a>
-          </li>
         </ul>
       </div>
     </nav>

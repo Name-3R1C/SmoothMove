@@ -5,6 +5,7 @@ import AddProperty from "./components/AddProperty";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import PropertySearch from "./components/PropertySearch";
+import Signup from "./components/signup";
 
 import Footer from "./components/Footer";
 
@@ -13,29 +14,39 @@ const pages = {
   PropertyDetail: "PropertyDetail",
   AddProperty: "AddProperty",
   Login: "Login",
+  Signup: "Signup",
 };
 
 function App() {
   const [page, setPage] = useState(pages.PropertyList);
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const [welcomeVisible, setWelcomeVisible] = useState(false);
-
+  const [isLoggedIn, setIsLoggedIn] = useState(!!cookies.user);
   function handleLogin(user) {
     setCookie("user", user);
-
+    setPage(pages.PropertyList);
     setWelcomeVisible(true);
     setTimeout(() => {
       setWelcomeVisible(false);
     }, 5000);
+    setIsLoggedIn(true);
   }
 
   function handleLogout(user) {
     removeCookie("user");
+    setIsLoggedIn(false);
   }
   function handleAddPropertyClick() {
     setPage(pages.AddProperty);
   }
-
+  function handleSignupClick() {
+    setPage(pages.Signup); // Set the page to Signup when the "Sign Up" button is clicked
+  }
+  function handleSignup(user) {
+    setCookie("user", user);
+    setIsLoggedIn(true); // Automatically log in the user after signup
+    setPage(pages.PropertyList); // Redirect to the PropertyList page
+  }
   return (
     <div className="app">
       <main className="layout">
@@ -44,9 +55,12 @@ function App() {
           userName={cookies.user}
           logout={handleLogout}
           onAddPropertyClick={handleAddPropertyClick}
+          onSignupClick={handleSignupClick}
+          isLoggedIn={isLoggedIn}
         />
         {page === pages.AddProperty && <AddProperty />}
         {page === pages.Login && <Login onLogin={handleLogin} />}
+        {page === pages.Signup && <Signup onSignup={handleSignup} />}
         {page === pages.PropertyList && (
           <PropertySearch
             welcomeVisible={welcomeVisible}
