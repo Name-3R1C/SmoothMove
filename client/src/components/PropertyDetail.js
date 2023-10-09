@@ -106,7 +106,10 @@ export default function PropertyDetail({
                       <img
                         src={image}
                         alt={`Property ${index + 2}`}
-                        className="full-width fixed-height"
+                        className={`full-width ${
+                          isImageEnlarged ? "enlarged" : ""
+                        }`}
+                        onClick={() => handleEnlargeImage(images[0])}
                       />
                       {index === 3 && images.length > 5 && (
                         <div className="overlay">
@@ -130,7 +133,7 @@ export default function PropertyDetail({
                   <img
                     src={enlargedImage}
                     alt="Enlarged Property Image"
-                    className="img-fluid"
+                    className="img-fluid fit-in-gallery"
                   />
                 </div>
               </div>

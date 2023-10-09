@@ -50,6 +50,12 @@ export default function Navbar({
       {welcomeVisible && (
         <div className="welcome-message">Welcome to SmoothMove</div>
       )}
+      <div>
+        {/* Display the user's name here */}
+        {userName && (
+          <span className="user-name">Welcome, {userName.firstName}</span>
+        )}
+      </div>
       <div class="dropdown">
         <button
           // class="btn btn-secondary dropdown-toggle"
@@ -70,12 +76,6 @@ export default function Navbar({
             )}
             <div style={circleStyles}>
               <FontAwesomeIcon icon={faUser} />
-            </div>
-            <div>
-              {/* Display the user's name here */}
-              {userName && (
-                <span className="user-name">{userName.firstName}</span>
-              )}
             </div>
           </div>
         </button>
