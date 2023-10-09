@@ -10,20 +10,20 @@ function Footer() {
     </div>
     <div className="categories">
         <div className="category">
-        <h3>Crypto</h3>
+        <h3>Rentals</h3>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Buy NFTs</a></li>
-            <li><a href="#">Sell NFTs</a></li>
+            <li><a href="#">Basements</a></li>
+            <li><a href="#">Appartments</a></li>
+            <li><a href="#">Condos</a></li>
+            <li><a href="#">Duplex/Triplex</a></li>
         </ul>
         </div>
         <div className="category">
         <h3>Market</h3>
         <ul>
-            <li><a href="#">Browse NFTs</a></li>
-            <li><a href="#">Buy NFTs</a></li>
-            <li><a href="#">Sell NFTs</a></li>
+            <li><a href="#">Rent-to-Own</a></li>
+            <li><a href="#">Rates</a></li>
+            <li><a href="#">Crime Stats</a></li>
         </ul>
         </div>
         <div className="category">
@@ -39,8 +39,8 @@ function Footer() {
     <div className="newsletter">
         <h3>Join Our Newsletter</h3>
         <div className="email-container">
-          <input type="email" placeholder="Enter your email" />
-          <button type="submit">Subscribe</button>
+        <input type="email" placeholder="Enter your email" />
+        <button type="submit">Subscribe</button>
         </div>
     </div>
     </footer>
