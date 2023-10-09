@@ -19,8 +19,6 @@ export default function Login({ onLogin }) {
         } else {
           setResponseMessage("");
           onLogin(res.data);
-          // Automatically hide the welcome message after 5 seconds
-
           window.location.href = "/property";
         }
       })

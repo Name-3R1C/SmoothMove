@@ -32,6 +32,9 @@ function App() {
   function handleLogout(user) {
     removeCookie("user");
   }
+  function handleAddPropertyClick() {
+    setPage(pages.AddProperty);
+  }
 
   return (
     <div className="app">
@@ -40,15 +43,16 @@ function App() {
           setPage={setPage}
           userName={cookies.user}
           logout={handleLogout}
+          onAddPropertyClick={handleAddPropertyClick}
         />
-        {welcomeVisible && (
-          <div className="welcome-message">
-            Welcome, {cookies.user?.firstName}
-          </div>
-        )}
         {page === pages.AddProperty && <AddProperty />}
         {page === pages.Login && <Login onLogin={handleLogin} />}
-        {page === pages.PropertyList && <PropertySearch />}
+        {page === pages.PropertyList && (
+          <PropertySearch
+            welcomeVisible={welcomeVisible}
+            userName={cookies.user?.firstName}
+          />
+        )}
       </main>
       <Footer />
     </div>

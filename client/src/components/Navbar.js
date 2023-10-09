@@ -4,9 +4,13 @@ import "./Navbar.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 
-export default function Navbar({ setPage, userName, logout }) {
+export default function Navbar({
+  setPage,
+  userName,
+  logout,
+  onAddPropertyClick,
+}) {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -73,6 +77,15 @@ export default function Navbar({ setPage, userName, logout }) {
             <>
               <li>
                 <span className="dropdown-item">{`Welcome, ${userName.firstName}`}</span>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="dropdown-item"
+                  onClick={onAddPropertyClick}
+                >
+                  Add Property
+                </button>
               </li>
               <li>
                 <a class="dropdown-item" onClick={logout}>
