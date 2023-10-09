@@ -71,6 +71,12 @@ export default function Navbar({
             <div style={circleStyles}>
               <FontAwesomeIcon icon={faUser} />
             </div>
+            <div>
+              {/* Display the user's name here */}
+              {userName && (
+                <span className="user-name">{userName.firstName}</span>
+              )}
+            </div>
           </div>
         </button>
         <ul
