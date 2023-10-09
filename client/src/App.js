@@ -34,6 +34,7 @@ function App() {
 
   function handleLogout(user) {
     removeCookie("user");
+    setPage(pages.PropertyList);
     setIsLoggedIn(false);
   }
   function handleAddPropertyClick() {
@@ -57,6 +58,7 @@ function App() {
           onAddPropertyClick={handleAddPropertyClick}
           onSignupClick={handleSignupClick}
           isLoggedIn={isLoggedIn}
+          welcomeVisible={welcomeVisible}
         />
         {page === pages.AddProperty && <AddProperty />}
         {page === pages.Login && <Login onLogin={handleLogin} />}

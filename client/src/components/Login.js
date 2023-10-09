@@ -28,48 +28,46 @@ export default function Login({ onLogin }) {
   };
 
   return (
-    <div className="login-overlay">
-      <div className="container-login">
-        <div className="row justify-content-center align-items-center">
-          <div className="col-md-5">
-            <div className="card card-login">
-              <div className="card-body">
-                <h2 className="card-title card-title-login">Log In</h2>
+    <div className="container-login">
+      <div className="row justify-content-center align-items-center">
+        <div className="col-md-5">
+          <div className="card card-login">
+            <div className="card-body">
+              <h2 className="card-title card-title-login">Log In</h2>
 
-                <div className="mb-3 input-group">
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Email address"
-                    onChange={(event) =>
-                      setUser({ ...user, email: event.target.value })
-                    }
-                  />
-                </div>
-                <div className="mb-3 input-group">
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Password"
-                    onChange={(event) =>
-                      setUser({ ...user, password: event.target.value })
-                    }
-                  />
-                </div>
-                <div className="d-flex justify-content-end">
-                  <button
-                    type="button"
-                    className="btn btn-primary float-right"
-                    onClick={signin}
-                  >
-                    Sign in
-                  </button>
-                  {responseMessage && (
-                    <div className="alert alert-danger mt-3">
-                      {responseMessage}
-                    </div>
-                  )}
-                </div>
+              <div className="mb-3 input-group">
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Email address"
+                  onChange={(event) =>
+                    setUser({ ...user, email: event.target.value })
+                  }
+                />
+              </div>
+              <div className="mb-3 input-group">
+                <input
+                  type="password"
+                  className="form-control"
+                  placeholder="Password"
+                  onChange={(event) =>
+                    setUser({ ...user, password: event.target.value })
+                  }
+                />
+              </div>
+              <div className="d-flex justify-content-end">
+                <button
+                  type="button"
+                  className="btn btn-primary float-right"
+                  onClick={signin}
+                >
+                  Sign in
+                </button>
+                {responseMessage && (
+                  <div className="alert alert-danger mt-3">
+                    {responseMessage}
+                  </div>
+                )}
               </div>
             </div>
           </div>

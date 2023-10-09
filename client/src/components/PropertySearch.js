@@ -5,14 +5,14 @@ import PropertyDetail from "./PropertyDetail";
 import "./PropertySearch.scss";
 import PropertyList from "./PropertyList"; // Import PropertyList component
 
-function PropertySearch({ welcomeVisible, userName }) {
+function PropertySearch() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [searchPerformed, setSearchPerformed] = useState(false);
 
-  console.log("welcomeVisible, userName", welcomeVisible, userName);
+  //console.log("welcomeVisible, userName", welcomeVisible, userName);
   const handleSearch = async (query) => {
     try {
       setLoading(true);
@@ -40,9 +40,6 @@ function PropertySearch({ welcomeVisible, userName }) {
 
   return (
     <div>
-      {welcomeVisible && (
-        <div className="welcome-message">Welcome, {userName}</div>
-      )}
       <div className="property-search bg-light">
         <HeroSection onSearch={handleSearch} />
         <div className="container mt-4 custom-container">

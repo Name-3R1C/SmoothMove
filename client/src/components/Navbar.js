@@ -10,6 +10,7 @@ export default function Navbar({
   logout,
   onAddPropertyClick,
   onSignupClick,
+  welcomeVisible,
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
@@ -46,7 +47,9 @@ export default function Navbar({
         </span>
         MOVE
       </div>
-
+      {welcomeVisible && (
+        <div className="welcome-message">Welcome to SmoothMove</div>
+      )}
       <div class="dropdown">
         <button
           // class="btn btn-secondary dropdown-toggle"
