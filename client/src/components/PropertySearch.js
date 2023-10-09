@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import HeroSection from "./HeroSection";
 import axios from "axios";
-import PropertyDetail from "./PropertyDetail";
 import "./PropertySearch.scss";
 import PropertyList from "./PropertyList"; // Import PropertyList component
+import PropertyCard from "./PropertyCard";
+import PropertyDetail from "./PropertyDetail";
 
 function PropertySearch() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -11,8 +12,8 @@ function PropertySearch() {
   const [loading, setLoading] = useState(false);
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [searchPerformed, setSearchPerformed] = useState(false);
+  const [currentProperty, setCurrentProperty] = useState();
 
-  //console.log("welcomeVisible, userName", welcomeVisible, userName);
   const handleSearch = async (query) => {
     try {
       setLoading(true);
@@ -30,79 +31,46 @@ function PropertySearch() {
     }
   };
 
-  const openPropertyDetail = (property) => {
-    setSelectedProperty(property);
+  const handleCardClick = (propertyId) => {
+    setCurrentProperty(propertyId);
   };
-
-  const closePropertyDetail = () => {
-    setSelectedProperty(null);
-  };
-
   return (
-    <div>
-      <div className="property-search bg-light">
-        <HeroSection onSearch={handleSearch} />
-        <div className="container mt-4 custom-container">
-          {searchPerformed ? ( // Conditionally render based on searchPerformed
-            <div className="row">
-              {loading ? (
-                <p>Loading...</p>
-              ) : searchResults.length === 0 ? (
-                <p>No results found.</p>
-              ) : (
-                searchResults.map((property) => (
-                  <div className="col-md-4 mb-3" key={property.id}>
-                    <div className="card">
-                      <img
-                        src={property.thumbnail_photo_url}
-                        className="card-img-top img-fluid"
-                        alt={property.title}
-                        style={{ maxHeight: "200px" }}
+    <div className="container">
+      {currentProperty ? (
+        <div className="detail-wrapper">
+          <PropertyDetail
+            currentPropertyID={currentProperty}
+            setCurrentProperty={setCurrentProperty}
+          />
+        </div>
+      ) : (
+        <div>
+          <div className="property-search bg-light">
+            <HeroSection onSearch={handleSearch} />
+            <div className="container mt-4 custom-container">
+              {searchPerformed ? ( // Conditionally render based on searchPerformed
+                <div className="row">
+                  {loading ? (
+                    <p>Loading...</p>
+                  ) : searchResults.length === 0 ? (
+                    <p>No results found.</p>
+                  ) : (
+                    searchResults.map((property) => (
+                      <PropertyCard
+                        key={property.id}
+                        property={property}
+                        onCardClick={handleCardClick}
                       />
-                      <div className="card-body">
-                        <h5 className="card-title">{property.title}</h5>
-
-                        <p className="card-text">
-                          <strong>Cost per Month:</strong> $
-                          {property.cost_per_month}
-                        </p>
-                        <p className="card-text">
-                          <strong>Bedrooms:</strong>{" "}
-                          {property.number_of_bedrooms}
-                        </p>
-                        <p className="card-text">
-                          <strong>Bathrooms:</strong>{" "}
-                          {property.number_of_bathrooms}
-                        </p>
-                        <p className="card-text">
-                          <strong>Street:</strong> {property.street}
-                        </p>
-                        <p className="card-text">
-                          <strong>City:</strong> {property.city}
-                        </p>
-                        <p className="card-text">
-                          <strong>Province:</strong> {property.province}
-                        </p>
-                        <p className="card-text">
-                          <strong>Postal Code:</strong> {property.post_code}
-                        </p>
-                        <button
-                          onClick={() => openPropertyDetail(property)}
-                          className="btn btn-secondary rounded-pill text-white"
-                        >
-                          View Details
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))
+                    )) //
+                  )}
+                </div>
+              ) : (
+                <PropertyList />
               )}
             </div>
-          ) : (
-            <PropertyList />
-          )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
