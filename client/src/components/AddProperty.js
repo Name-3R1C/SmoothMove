@@ -2,18 +2,14 @@ import axios from "axios";
 import React, { useState } from "react";
 
 const addImage = ({ propertyID, imageURL }) => {
-  console.log("seperateURL----\n ", propertyID, imageURL);
-  
   // Seperate urls
   const urls = imageURL.split(/\r?\n/);
   if (!urls[urls.length -1]) {
     urls.pop();
   }
-  console.log("result pop\n",urls);
 
   urls.forEach(url => {
-    axios
-    .post("/api/images", { propertyID: propertyID, url: url })
+    axios.post("/api/images", { propertyID: propertyID, url: url });
   });
   
 };
@@ -47,10 +43,9 @@ export default function AddProperty() {
     axios
       .post("/api/properties", { property: property })
       .then((res) => {
-        console.log("res.data ", res.data);
         setImage({...image, propertyID: res.data.id});
-        addImage(res.data.id, image.imageURL);
-        // window.location.reload();
+        addImage({ propertyID: res.data.id, imageURL: image.imageURL });
+        window.location.reload();
       })
       .catch((e) => {
         console.error(e);

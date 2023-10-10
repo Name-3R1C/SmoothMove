@@ -3,9 +3,6 @@ const db = require("../db");
 
 // Default route to display all properties
 router.post("/images", async (req, res) => {
-  // console.log('route - image');
-  // console.log(req.body);
-
   try {
     const propertyID = req.body.propertyID;
     const url = req.body.url;
@@ -14,7 +11,7 @@ router.post("/images", async (req, res) => {
     }
 
     const result = await db.addImage({ propertyID, url });
-
+    console.log(result)
     res.status(201).json(result);
   } catch (error) {
     console.error(error);

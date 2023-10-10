@@ -71,7 +71,6 @@ const getPropertyById = async (propertyId) => {
   const params = [propertyId];
 
   const result = await queryDatabase(sql, params);
-  //console.log("result", result);
   if (result.length === 0) {
     return null;
   }
@@ -81,7 +80,7 @@ const getPropertyById = async (propertyId) => {
     ...result[0],
     images: result.map((row) => row.photo_url).filter((url) => url !== null),
   };
-  //console.log("property :", property);
+  
   return property;
 };
 
@@ -112,7 +111,6 @@ const getAllProperties = (query, city, province, postcode, limit = 10) => {
     queryString += ` AND post_code LIKE $${queryParams.length} `;
   }
 
-  //console.log(queryString);
   return queryDatabase(queryString, queryParams);
 };
 
@@ -165,11 +163,11 @@ const deletePropertyById = async (propertyId) => {
       deletePropertyQuery,
       deletePropertyParams
     );
-    //console.log("result.length", result.length);
+    
     if (result.length === 0) {
       return null; // Property with the given ID was not found
     }
-    //console.log("result[0]", result[0]);
+    
     return result[0];
   } catch (error) {
     console.error("Error deleting property:", error);
@@ -178,8 +176,6 @@ const deletePropertyById = async (propertyId) => {
 };
 
 const addImage = async ({ propertyID, url }) => {
-  console.log('addImage --- ');
-  
   const sql = `
     INSERT INTO images (
       property_id,
