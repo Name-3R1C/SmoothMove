@@ -1,7 +1,7 @@
 /* Footer.scss */
 
 .footer {
-    background-color: #f0f8ff;
+    background-color: #639fd3;
     margin-top: 20px;
     padding: 20px; /* Add padding as needed */
   
@@ -11,6 +11,14 @@
       align-items: center;
     }
   
+    .smooth {
+      color: #FAF2F2;
+    }
+
+    .move-inc {
+      color: #ff1b1b;
+    }
+
     .categories {
       display: flex;
       justify-content: space-between;
