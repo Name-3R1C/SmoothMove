@@ -2,7 +2,7 @@ import React from "react";
 import "./PropertyList.scss";
 
 export default function PropertyCard(props) {
-  console.log(props.setCurrentProperty);
+  // console.log(props.setCurrentProperty);
   const formatDate = (dateString) => {
     const options = { month: "short", year: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);

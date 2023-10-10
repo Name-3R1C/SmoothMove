@@ -27,16 +27,16 @@ const addProperty = async (property) => {
       title,
       description,
       thumbnail_photo_url,
-      cover_photo_url,
       cost_per_month,
+      area,
+      number_of_bathrooms,
+      number_of_bedrooms,
       street,
       city,
       province,
-      post_code,
       country,
-      area,
-      number_of_bathrooms,
-      number_of_bedrooms
+      post_code,
+      available_from
     ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING *`;
 
   const params = [
@@ -44,16 +44,16 @@ const addProperty = async (property) => {
     property.title,
     property.description,
     property.thumbnail_photo_url,
-    property.cover_photo_url,
     property.cost_per_month,
-    property.street,
-    property.city,
-    property.province,
-    property.post_code,
-    property.country,
     property.area,
     property.number_of_bathrooms,
     property.number_of_bedrooms,
+    property.street,
+    property.city,
+    property.province,
+    property.country,
+    property.post_code,
+    property.available_from,
   ];
 
   const result = await queryDatabase(sql, params);
@@ -71,7 +71,6 @@ const getPropertyById = async (propertyId) => {
   const params = [propertyId];
 
   const result = await queryDatabase(sql, params);
-  //console.log("result", result);
   if (result.length === 0) {
     return null;
   }
@@ -81,7 +80,7 @@ const getPropertyById = async (propertyId) => {
     ...result[0],
     images: result.map((row) => row.photo_url).filter((url) => url !== null),
   };
-  //console.log("property :", property);
+  
   return property;
 };
 
@@ -112,7 +111,6 @@ const getAllProperties = (query, city, province, postcode, limit = 10) => {
     queryString += ` AND post_code LIKE $${queryParams.length} `;
   }
 
-  //console.log(queryString);
   return queryDatabase(queryString, queryParams);
 };
 
@@ -165,16 +163,32 @@ const deletePropertyById = async (propertyId) => {
       deletePropertyQuery,
       deletePropertyParams
     );
-    //console.log("result.length", result.length);
+    
     if (result.length === 0) {
       return null; // Property with the given ID was not found
     }
-    //console.log("result[0]", result[0]);
+    
     return result[0];
   } catch (error) {
     console.error("Error deleting property:", error);
     throw error;
   }
+};
+
+const addImage = async ({ propertyID, url }) => {
+  const sql = `
+    INSERT INTO images (
+      property_id,
+      photo_url
+    ) VALUES ($1, $2) RETURNING *`;
+
+  const params = [
+    propertyID,
+    url
+  ];
+
+  const result = await queryDatabase(sql, params);
+  return result;
 };
 
 module.exports = {
@@ -185,4 +199,5 @@ module.exports = {
   deletePropertyById,
   addUser,
   getUserByEmail,
+  addImage
 };

@@ -32,9 +32,10 @@ router.get("/property/:id", async (req, res) => {
 });
 
 router.post("/properties", async (req, res) => {
+  console.log("route - post - prop -----");
+
   try {
     const newProperty = req.body.property;
-
     if (!newProperty) {
       return res.status(400).json({ error: "Property data is required" });
     }
