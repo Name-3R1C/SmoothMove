@@ -122,14 +122,11 @@ export default function PropertyDetail({
               </div>
             </div>
             {isImageEnlarged && (
-              <div className="enlarged-image-container">
+              <div
+                className="enlarged-image-container"
+                onClick={handleCloseEnlargedImage}
+              >
                 <div className="enlarged-image">
-                  <span
-                    className="close-icon"
-                    onClick={handleCloseEnlargedImage}
-                  >
-                    &times;
-                  </span>
                   <img
                     src={enlargedImage}
                     alt="Enlarged Property Image"
