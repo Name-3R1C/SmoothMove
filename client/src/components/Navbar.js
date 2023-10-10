@@ -40,7 +40,7 @@ export default function Navbar({
   };
   return (
     <nav className="navbar">
-      <div className="navbar-brand" onClick={() => setPage("PropertyList")}>
+      <div className="navbar-brand" onClick={() => window.location.reload()}>
         <span className="name_red">
           <FontAwesomeIcon icon={faHouse} />
           Smooth
