@@ -50,7 +50,6 @@ function App() {
   }
   return (
     <div className="app">
-      <main className="layout">
         <Navbar
           setPage={setPage}
           userName={cookies.user}
@@ -60,6 +59,7 @@ function App() {
           isLoggedIn={isLoggedIn}
           welcomeVisible={welcomeVisible}
         />
+        <main className="layout">
         {page === pages.AddProperty && <AddProperty />}
         {page === pages.Login && <Login onLogin={handleLogin} />}
         {page === pages.Signup && <Signup onSignup={handleSignup} />}
