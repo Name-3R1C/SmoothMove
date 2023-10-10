@@ -178,7 +178,7 @@ const deletePropertyById = async (propertyId) => {
 };
 
 const addImage = async ({ propertyID, url }) => {
-  // console.log('addImage --- ');
+  console.log('addImage --- ');
   
   const sql = `
     INSERT INTO images (

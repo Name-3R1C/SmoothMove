@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 const addImage = ({ propertyID, imageURL }) => {
-  // console.log("seperateURL----\n ", propertyID, imageURL);
+  console.log("seperateURL----\n ", propertyID, imageURL);
   
   // Seperate urls
   const urls = imageURL.split(/\r?\n/);
@@ -49,7 +49,7 @@ export default function AddProperty() {
       .then((res) => {
         console.log("res.data ", res.data);
         setImage({...image, propertyID: res.data.id});
-        addImage(image);
+        addImage(res.data.id, image.imageURL);
         // window.location.reload();
       })
       .catch((e) => {
@@ -295,9 +295,9 @@ export default function AddProperty() {
           >
             Create
           </button>
-          <a href="#" className="btn btn-secondary ms-2">
+          <button className="btn btn-secondary ms-2">
             Cancel
-          </a>
+          </button>
         </div>
       </form>
     </div>
