@@ -38,7 +38,3 @@ CREATE TABLE images (
   property_id INTEGER REFERENCES properties(id) ON DELETE CASCADE,
   photo_url VARCHAR(255) NOT NULL
 );
-
-UPDATE images
-SET photo_url = 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2940&q=80'
-WHERE id = 1;
