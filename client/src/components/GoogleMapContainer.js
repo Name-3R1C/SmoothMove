@@ -1,5 +1,7 @@
 import React from "react";
 import GoogleMap from "./GoogleMap";
+import './GoogleMapContainer.scss';
+
 
 function GoogleMapContainer() {
 return (
