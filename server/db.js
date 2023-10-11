@@ -103,7 +103,7 @@ const getAllProperties = (query, city, province, postcode, limit = 10) => {
 
   if (province) {
     queryParams.push(`%${province}%`);
-    queryString += ` AND province LIKE $${queryParams.length} `;
+    queryString += ` AND LOWER(province) LIKE LOWER($${queryParams.length}) `;
   }
 
   if (postcode) {
