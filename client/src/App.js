@@ -8,6 +8,7 @@ import PropertySearch from "./components/PropertySearch";
 import Signup from "./components/signup";
 import HeroSectionPicBox from "./components/HeroSectionPicBox";
 import Footer from "./components/Footer";
+// import GoogleMapContainer from "./components/GoogleMapContainer";
 
 const pages = {
   PropertyList: "PropertyList",
@@ -71,6 +72,7 @@ function App() {
           />
         )}
       </main>
+      {/* <GoogleMapContainer /> */}
       <Footer />
     </div>
   );
