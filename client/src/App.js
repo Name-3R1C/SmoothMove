@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import PropertySearch from "./components/PropertySearch";
 import Signup from "./components/signup";
-
+import HeroSectionPicBox from "./components/HeroSectionPicBox";
 import Footer from "./components/Footer";
 
 const pages = {
@@ -59,7 +59,8 @@ function App() {
           isLoggedIn={isLoggedIn}
           welcomeVisible={welcomeVisible}
         />
-        <main className="layout">
+          <main className="layout">
+        <HeroSectionPicBox />
         {page === pages.AddProperty && <AddProperty />}
         {page === pages.Login && <Login onLogin={handleLogin} />}
         {page === pages.Signup && <Signup onSignup={handleSignup} />}
