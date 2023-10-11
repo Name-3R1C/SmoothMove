@@ -11,6 +11,7 @@ export default function PropertyDetail({
   const [images, setImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [enlargedImage, setEnlargedImage] = useState(null); // To store the URL of the enlarged image
+  const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
     // Define the URL to fetch property details by ID
@@ -53,7 +54,6 @@ export default function PropertyDetail({
   };
 
   const handleEnlargeImage = (image) => {
-    console.log('handleEnlargeImage ----', image);
     setEnlargedImage(image);
   };
 
@@ -61,6 +61,10 @@ export default function PropertyDetail({
     setEnlargedImage(null);
   };
 
+  const toggleOverlay = () => {
+    setShowOverlay(!showOverlay);
+  };
+  
   const isImageEnlarged = enlargedImage !== null;
 
   return (
@@ -113,7 +117,7 @@ export default function PropertyDetail({
                         onClick={(event) => handleEnlargeImage(image)}
                       />
                       {index === 3 && images.length > 5 && (
-                        <div className="overlay">
+                        <div className="overlay" onClick={toggleOverlay}>
                           <p>+{images.length - 4}</p>
                         </div>
                       )}
@@ -133,6 +137,30 @@ export default function PropertyDetail({
                     alt="Enlarged Property Image"
                     className="img-fluid fit-in-gallery"
                   />
+                </div>
+              </div>
+            )}
+
+            {showOverlay && (
+              <div
+                className="enlarged-image-container"
+                onClick={toggleOverlay}
+              >
+                <div className="row">
+                  {images.map((image, index) => (
+                    <div className="col-md-4 mb-3" key={index}>
+                      <div className="card">
+                        <img
+                          src={image}
+                          alt={`Property ${index + 2}`}
+                          className={`full-width ${
+                            isImageEnlarged ? "enlarged" : ""
+                          }`}
+                          onClick={() => handleEnlargeImage(image)}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             )}
