@@ -1,0 +1,44 @@
+/* HeroSectionPicBox.scss */
+
+.hero {
+    background-image: url("https://static.rdc.moveaws.com/images/hero/default/2021-11/jpg/hp-hero-desktop.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Adjust the height as needed */
+  
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      width: auto ;
+  
+      h1 {
+        font-size: 36px;
+        color: #fff;
+      }
+  
+      .search-input {
+        margin-top: 20px;
+  
+        input {
+          padding: 10px;
+          border: none;
+          border-radius: 4px;
+          margin-right: 10px;
+        }
+  
+        button {
+          background-color: #007bff; /* Customize the button styles */
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  
