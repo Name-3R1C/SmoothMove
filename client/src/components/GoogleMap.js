@@ -2,34 +2,35 @@ import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 
 class GoogleMap extends Component {
-render() {
+  render() {
     const mapStyles = {
-    width: "100%",
+      width: "100%",
       height: "300px", // Adjust the height as needed
     };
 
     return (
-    <Map
+      <Map
         google={this.props.google}
-        zoom={14} // Adjust the initial zoom level
+        zoom={10} // Adjust the initial zoom level as needed
         style={mapStyles}
         initialCenter={{
-          lat: 37.7749, // Initial latitude
-          lng: -122.4194, // Initial longitude
+          lat: 43.651070, // Greater Toronto area latitude
+          lng: -79.347015, // Greater Toronto area longitude
         }}
-    >
+      >
         <Marker
-        name={"Your Location"}
-        position={{
-            lat: 37.7749, // Marker latitude
-            lng: -122.4194, // Marker longitude
-        }}
+          name={"Your Location"}
+          position={{
+            lat: 43.651070, // Marker latitude
+            lng: -79.347015, // Marker longitude
+          }}
         />
-    </Map>
+      </Map>
     );
-}
+  }
 }
 
 export default GoogleApiWrapper({
-apiKey: "AIzaSyBDzENywtzLCMkt_gSMuMz8TiM-R7DNqtQ",
+  apiKey: "AIzaSyBDzENywtzLCMkt_gSMuMz8TiM-R7DNqtQ",
 })(GoogleMap);
+
