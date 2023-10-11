@@ -1,4 +1,25 @@
 .hero-section {
+  background-image: url("https://static.rdc.moveaws.com/images/hero/default/2021-11/jpg/hp-hero-desktop.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 400px; /* Adjust the height as needed */
+
   margin-top: 20px;
-  padding-top: 10rem; /* Adjust the value as needed */
+  padding-top: 10em; /* Adjust the value as needed */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  text-align: center;
+  width: auto ;
+}
+
+h1 {
+  margin-top: 1em;
+  font-size: 36px;
+  color: #fff;
 }

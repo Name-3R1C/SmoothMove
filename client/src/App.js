@@ -61,7 +61,7 @@ function App() {
           welcomeVisible={welcomeVisible}
         />
           <main className="layout">
-        <HeroSectionPicBox />
+        {/* <HeroSectionPicBox /> */}
         {page === pages.AddProperty && <AddProperty />}
         {page === pages.Login && <Login onLogin={handleLogin} />}
         {page === pages.Signup && <Signup onSignup={handleSignup} />}

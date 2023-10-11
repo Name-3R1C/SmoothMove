@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./HeroSection.scss"
 
 function HeroSection({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,7 +18,8 @@ function HeroSection({ onSearch }) {
   };
 
   return (
-    <div className="hero-section ">
+    <div className="hero-section">
+      <h1>Discover Your New Life With Us!</h1>
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-4">
