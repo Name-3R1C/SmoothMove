@@ -39,7 +39,7 @@ export default function Navbar({
     marginLeft: "10px", // Add spacing between the circle and icon
   };
   return (
-    <nav className="navbar">
+    <nav className="navbar fixed-top">
       <div className="navbar-brand" onClick={() => window.location.reload()}>
         <span className="name_red">
           <FontAwesomeIcon icon={faHouse} />
