@@ -53,6 +53,7 @@ export default function PropertyDetail({
   };
 
   const handleEnlargeImage = (image) => {
+    console.log('handleEnlargeImage ----', image);
     setEnlargedImage(image);
   };
 
@@ -109,7 +110,7 @@ export default function PropertyDetail({
                         className={`full-width ${
                           isImageEnlarged ? "enlarged" : ""
                         }`}
-                        onClick={() => handleEnlargeImage(images[0])}
+                        onClick={(event) => handleEnlargeImage(image)}
                       />
                       {index === 3 && images.length > 5 && (
                         <div className="overlay">
