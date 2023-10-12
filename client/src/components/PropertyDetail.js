@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./PropertyDetail.scss";
-import ImageCarousel from "./ImageCarousel";
-
 export default function PropertyDetail({
   currentPropertyID,
   setCurrentProperty,
@@ -12,13 +10,9 @@ export default function PropertyDetail({
   const [images, setImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [enlargedImage, setEnlargedImage] = useState(null); // To store the URL of the enlarged image
-  const [isCarouselVisible, setCarouselVisible] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(false);
-
   useEffect(() => {
     // Define the URL to fetch property details by ID
     const url = `/api/property/${currentPropertyID}`;
-
     axios
       .get(url)
       .then((response) => {
@@ -29,7 +23,6 @@ export default function PropertyDetail({
         console.error(error);
       });
   }, [currentPropertyID]);
-
   // const handlePictureChange = (nextIndex) => {
   //   const newIndex = (nextIndex + images.length) % images.length;
   //   setCurrentImageIndex(newIndex);
@@ -45,35 +38,20 @@ export default function PropertyDetail({
       setCurrentProperty(null);
     } catch (error) {
       console.error("Error deleting property:2", error);
-
       alert("Error deleting property. Please try again later.");
     }
   };
-
   const handlePictureChange = (nextIndex) => {
     const newIndex = (nextIndex + images.length) % images.length;
     setCurrentImageIndex(newIndex);
   };
-
-  // const handleEnlargeImage = (image) => {
-  //   setEnlargedImage(image);
-  // };
-  const handleEnlargeImage = (image, index) => {
+  const handleEnlargeImage = (image) => {
     setEnlargedImage(image);
-    setCurrentImageIndex(index);
-    setCarouselVisible(true);
   };
   const handleCloseEnlargedImage = () => {
     setEnlargedImage(null);
-    setCarouselVisible(false);
   };
-
-  const toggleOverlay = () => {
-    setShowOverlay(!showOverlay);
-  };
-
   const isImageEnlarged = enlargedImage !== null;
-
   return (
     <div
       className={`container custom-container ${
@@ -92,14 +70,16 @@ export default function PropertyDetail({
             </span>
           </div>
           <div className="property-image-gallery row">
-            <div className={`col-md-${isImageEnlarged ? "12" : "6"}`}>
+            <div
+              className={`col-md-${
+                isImageEnlarged ? "12" : "6"
+              } custom-padding`}
+            >
               <div className="card">
                 <img
                   src={images[0]} // Assuming the first image is at index 0
                   alt={`Property 1`}
-                  className={`img-fixed-height ${
-                    isImageEnlarged ? "enlarged" : ""
-                  }`}
+                  className={`full-width ${isImageEnlarged ? "enlarged" : ""}`}
                   onClick={() => handleEnlargeImage(images[0])}
                 />
               </div>
@@ -108,7 +88,7 @@ export default function PropertyDetail({
               <div className="row">
                 {images.slice(1, 5).map((image, index) => (
                   <div
-                    className={`col-6${index === 3 ? "" : " mb-3"} `}
+                    className={`col-6${index === 3 ? "" : " mb-3"}`}
                     key={index}
                   >
                     <div className="card">
@@ -122,21 +102,9 @@ export default function PropertyDetail({
                       />
                       {index === 3 && images.length > 5 && (
                         <div
-                          className="overlay img-fixed-size"
+                          className="overlay"
                           onClick={() => handleEnlargeImage(images[index + 1])}
                         >
-                          {isCarouselVisible && ( // Render the carousel when it's visible
-                            <ImageCarousel
-                              images={images}
-                              currentImageIndex={currentImageIndex}
-                              onNext={() =>
-                                handlePictureChange(currentImageIndex + 1)
-                              }
-                              onPrev={() =>
-                                handlePictureChange(currentImageIndex - 1)
-                              }
-                            />
-                          )}
                           <p>+{images.length - 4}</p>
                         </div>
                       )}
@@ -159,99 +127,77 @@ export default function PropertyDetail({
                 </div>
               </div>
             )}
-
-            {showOverlay && (
-              <div className="enlarged-image-container" onClick={toggleOverlay}>
-                <div className="row">
-                  {images.map((image, index) => (
-                    <div className="col-md-4 mb-3" key={index}>
-                      <div className="card">
-                        <img
-                          src={image}
-                          alt={`Property ${index + 2}`}
-                          className={`full-width ${
-                            isImageEnlarged ? "enlarged" : ""
-                          }`}
-                          onClick={() => handleEnlargeImage(image)}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
           {/* <div
-              id="propertyCarousel"
-              className="carousel slide"
-              data-ride="carousel"
-              data-interval={carouselInterval}
+          col-md-${index === 0 ? "6" : "3"}
+            id="propertyCarousel"
+            className="carousel slide"
+            data-ride="carousel"
+            data-interval={carouselInterval}
+          >
+            <ol className="carousel-indicators">
+              {images.map((_, index) => (
+                <li
+                  key={index}
+                  data-target="#propertyCarousel"
+                  data-slide-to={index}
+                  className={index === currentImageIndex ? "active" : ""}
+                ></li>
+              ))}
+            </ol>
+            <div className="carousel-inner">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className={`carousel-item ${
+                    index === currentImageIndex ? "active" : ""
+                  }`}
+                >
+                  <img
+                    src={image}
+                    className="d-block w-100"
+                    alt={`Property ${index + 1}`}
+                    //style={{ width: imageWidth, height: imageHeight }}
+                  />
+                </div>
+              ))}
+            </div>
+            <a
+              className="carousel-control-prev"
+              href="#propertyCarousel"
+              role="button"
+              data-slide="prev"
+              onClick={() => handlePictureChange(currentImageIndex - 1)}
             >
-              <ol className="carousel-indicators">
-                {images.map((_, index) => (
-                  <li
-                    key={index}
-                    data-target="#propertyCarousel"
-                    data-slide-to={index}
-                    className={index === currentImageIndex ? "active" : ""}
-                  ></li>
-                ))}
-              </ol>
-              <div className="carousel-inner">
-                {images.map((image, index) => (
-                  <div
-                    key={index}
-                    className={`carousel-item ${
-                      index === currentImageIndex ? "active" : ""
-                    }`}
-                  >
-                    <img
-                      src={image}
-                      className="d-block w-100"
-                      alt={`Property ${index + 1}`}
-                      //style={{ width: imageWidth, height: imageHeight }}
-                    />
-                  </div>
-                ))}
-              </div>
-              <a
-                className="carousel-control-prev"
-                href="#propertyCarousel"
-                role="button"
-                data-slide="prev"
-                onClick={() => handlePictureChange(currentImageIndex - 1)}
-              >
-                <span
-                  className="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="sr-only">Previous</span>
-              </a>
-              <a
-                className="carousel-control-next"
-                href="#propertyCarousel"
-                role="button"
-                data-slide="next"
-                onClick={() => handlePictureChange(currentImageIndex + 1)}
-              >
-                <span
-                  className="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span className="sr-only">Next</span>
-              </a>
-            </div>{" "} */}
-          {/*end of C */}
+              <span
+                className="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="sr-only">Previous</span>
+            </a>
+            <a
+              className="carousel-control-next"
+              href="#propertyCarousel"
+              role="button"
+              data-slide="next"
+              onClick={() => handlePictureChange(currentImageIndex + 1)}
+            >
+              <span
+                className="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span className="sr-only">Next</span>
+            </a>
+          </div> */}
           <div className="card-body">
             <h5 className="card-title">{property.title}</h5>
-            <p className="card-text text-start">{property.description}</p>
+            <p className="card-text">{property.description}</p>
           </div>
           <div className="card-footer">
             <p className="card-text">
               <strong>Address:</strong> {property.street}, {property.city},{" "}
               {property.province}, {property.post_code}
             </p>
-
             <button className="btn btn-danger" onClick={handleDeleteProperty}>
               Delete Property
             </button>
