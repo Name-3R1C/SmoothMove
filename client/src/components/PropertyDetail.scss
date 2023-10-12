@@ -15,10 +15,6 @@
 /* PropertyDetail.scss */
 
 /* Custom class for the first image to take up the full width */
-.full-width {
-  width: 100%;
-  height: auto;
-}
 
 /* Custom class for the other images to take up a smaller portion of the width */
 .fixed-height {
@@ -109,7 +105,7 @@
 .enlarged-image-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -124,6 +120,14 @@
 }
 
 .enlarged-image img.fit-in-gallery {
-  max-width: 100%;
-  max-height: 100%;
+  //   max-width: 100%;
+  //   max-height: 100%;
+  align-items: top;
+}
+.img-fixed-size {
+  width: 100%; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+}
+.img-fixed-height {
+  height: 100%;
 }
