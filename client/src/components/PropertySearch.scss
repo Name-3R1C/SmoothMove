@@ -8,6 +8,11 @@
   padding: 4em;
 }
 .custom-container {
-  padding: 0; /* Remove padding */
+  padding: 10; /* Remove padding */
   border: none; /* Remove border */
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
 }
