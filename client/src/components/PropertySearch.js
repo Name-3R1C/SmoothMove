@@ -47,7 +47,7 @@ function PropertySearch() {
         <div>
           <div className="property-search bg-light">
             <HeroSection onSearch={handleSearch} />
-            <div className="container mt-4 custom-container">
+            <div className="w-100 mt-4 custom-container">
               {searchPerformed ? ( // Conditionally render based on searchPerformed
                 <div className="row">
                   {loading ? (
