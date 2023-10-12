@@ -128,8 +128,8 @@ export default function PropertyDetail({
               </div>
             )}
           </div>
-          {/* <div
-          col-md-${index === 0 ? "6" : "3"}
+          <div
+          // col-md-${index === 0 ? "6" : "3"}
             id="propertyCarousel"
             className="carousel slide"
             data-ride="carousel"
@@ -188,7 +188,7 @@ export default function PropertyDetail({
               ></span>
               <span className="sr-only">Next</span>
             </a>
-          </div> */}
+          </div>
           <div className="card-body">
             <h5 className="card-title">{property.title}</h5>
             <p className="card-text">{property.description}</p>
