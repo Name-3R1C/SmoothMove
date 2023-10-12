@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import './AddProperty.scss';
+
 
 const addImage = ({ propertyID, imageURL }) => {
   // Seperate urls
@@ -53,10 +55,11 @@ export default function AddProperty() {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="main-container container">
       <h2>Add Property</h2>
       <form>
-        <div className="mb-3">
+        <div className="row">
+        <div className="col-4 mb-3">
           <label htmlFor="title" className="form-label">
             Title
           </label>
@@ -71,7 +74,7 @@ export default function AddProperty() {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="col-4 mb-3">
           <label htmlFor="description" className="form-label">
             Description
           </label>
@@ -85,8 +88,9 @@ export default function AddProperty() {
             }
           ></textarea>
         </div>
+        
 
-        <div className="mb-3">
+        <div className="col-4 mb-3">
           <label htmlFor="bedrooms" className="form-label">
             # 🛌
           </label>
@@ -103,8 +107,10 @@ export default function AddProperty() {
             }
           />
         </div>
-
-        <div className="mb-3">
+        </div>
+        
+        <div className="row">
+        <div className="col-4 mb-3">
           <label htmlFor="bathrooms" className="form-label">
             # 🚽
           </label>
@@ -122,7 +128,7 @@ export default function AddProperty() {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="col-4 mb-3">
           <label htmlFor="area" className="form-label">
             Area (sqft)
           </label>
@@ -137,7 +143,7 @@ export default function AddProperty() {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="col-4 mb-3">
           <label htmlFor="cost" className="form-label">
             Cost Per Month
           </label>
@@ -150,6 +156,7 @@ export default function AddProperty() {
               setProperty({ ...property, cost_per_month: event.target.value })
             }
           />
+        </div>
         </div>
 
         <div className="mb-3">
