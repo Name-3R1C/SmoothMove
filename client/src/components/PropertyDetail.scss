@@ -131,3 +131,16 @@
 .img-fixed-height {
   height: 100%;
 }
+
+.overlay {
+  position: relative;
+  cursor: pointer;
+  &:before {
+    content: "+"; /* Overlay content for showing additional images */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+  }
+}

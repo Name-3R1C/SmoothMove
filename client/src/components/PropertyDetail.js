@@ -13,6 +13,7 @@ export default function PropertyDetail({
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [enlargedImage, setEnlargedImage] = useState(null); // To store the URL of the enlarged image
   const [isCarouselVisible, setCarouselVisible] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
     // Define the URL to fetch property details by ID
@@ -67,9 +68,9 @@ export default function PropertyDetail({
     setCarouselVisible(false);
   };
 
-  // const toggleOverlay = () => {
-  //   setShowOverlay(!showOverlay);
-  // };
+  const toggleOverlay = () => {
+    setShowOverlay(!showOverlay);
+  };
 
   const isImageEnlarged = enlargedImage !== null;
 
