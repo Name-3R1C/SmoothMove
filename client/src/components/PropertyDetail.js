@@ -229,7 +229,7 @@ export default function PropertyDetail({
           </div> */}
           <div className="card-body">
             <h5 className="card-title">{property.title}</h5>
-            <p className="card-text">{property.description}</p>
+            <p className="card-text text-start">{property.description}</p>
           </div>
           <div className="card-footer">
             <p className="card-text">
