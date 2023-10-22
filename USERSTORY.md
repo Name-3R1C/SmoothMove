@@ -1,4 +1,4 @@
-# User Stories for Smooth Move Web Application
+# Welcome to "Smooth Move" - Your Trusted Rental and Property Search Platform!
 
 ## User Registration and Profiles
 

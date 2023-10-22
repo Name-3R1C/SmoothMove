@@ -7,8 +7,15 @@ const PropertyDetailBody = ({ property, handleDeleteProperty }) => {
     <>
       <div className="card-body">
         <h5 className="card-title text-start">{property.title}</h5>
-        <p className="card-text justify-text">{property.description}</p>
+        <p className="card-text text-start">
+          {property.number_of_bedrooms} bed . {property.number_of_bathrooms}{" "}
+          Bath
+        </p>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{property.description}</li>
+        </ul>
       </div>
+
       <div className="card-footer">
         <p className="card-text">
           <strong>Address:</strong> {property.street}, {property.city},{" "}
