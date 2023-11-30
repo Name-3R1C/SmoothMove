@@ -83,4 +83,19 @@ CREATE DATABASE smoothmove;
 \i seeds/01_users.sql
 ```
 
+# Screenshots
+<img src="https://github.com/Name-3R1C/SmoothMove/blob/main/Screenshots/Homepage.png?raw=true" width=50% height=50%>
+<img src="https://github.com/Name-3R1C/SmoothMove/blob/main/Screenshots/Details.png?raw=true" width=50% height=50%>
+<img src="https://github.com/Name-3R1C/SmoothMove/blob/main/Screenshots/AddProp.png?raw=true" width=50% height=50%>
+<img src="https://github.com/Name-3R1C/SmoothMove/blob/main/Screenshots/Signup.png?raw=true" width=50% height=50%>
+
 # Dependencies
+- axios 1.5.1
+- bootstrap 5.3.2
+- react 18.2.0
+- sass 1.69.0
+- bcryptjs 2.4.3
+- cors 2.8.5
+- dotenv 16.3.1
+- express 4.18.2
+- pg 8.11.3
