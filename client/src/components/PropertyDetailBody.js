@@ -8,7 +8,7 @@ const PropertyDetailBody = ({ property, handleDeleteProperty }) => {
       <div className="card-body">
         <h5 className="card-title text-start">{property.title}</h5>
         <p className="card-text text-start">
-          {property.number_of_bedrooms} bed . {property.number_of_bathrooms}{" "}
+          🛌 {property.number_of_bedrooms} bed . 🚽 {property.number_of_bathrooms}{" "}
           Bath
         </p>
         <ul class="list-group list-group-flush">
